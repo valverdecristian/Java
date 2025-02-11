@@ -12,10 +12,20 @@ public class Calculadora {
         System.out.print("Ingrese otro numero: ");
         int segundoIngreso = scanner.nextInt();
 
-        int resultado = primerIngreso + segundoIngreso;
+        int resultado = suma(primerIngreso, segundoIngreso);
 
         System.out.print("El resultado es: " + resultado);
 
         scanner.close();
+    }
+
+    // Método para sumar dos números
+    public static int suma(int a, int b) {
+        return a + b;
+    }
+
+    // Método para restar dos números
+    public static int resta(int a, int b) {
+        return a - b;
     }
 }

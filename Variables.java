@@ -24,3 +24,6 @@ public class Variables {
 // LONG: utiliza 8 bytes
 
 // snippet: sout -> System.out.println();
+
+// tener en cuenta el alcance, si la variable se declara dentro de unas llaves
+// no se podra acceder por fuera de ellas.

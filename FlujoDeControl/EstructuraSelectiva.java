@@ -1,4 +1,5 @@
-public class Condicionales {
+package FlujoDeControl;
+public class EstructuraSelectiva {
     public static void main(String[] args) {
         int edad = 18;
 
