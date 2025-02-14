@@ -28,3 +28,7 @@ public class OperadoresAritmeticos {
  *  5) suma
  *  6) resta
  */
+
+/** CONVERSION DE TIPOS
+ *
+ */

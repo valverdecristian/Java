@@ -1,3 +1,4 @@
+package FlujoDeControl;
 import java.util.Scanner;
 
 public class OperadorTernario {

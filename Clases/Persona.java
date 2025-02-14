@@ -10,7 +10,8 @@ public class Persona {
         this.edad = edad;
     }
 
-    // Método
+    // Método: para poder hacer referencia a una propiedad puedo usar la palabra
+    // reservada this (this.nombre, etc.)
     public void saludar() {
         System.out.println("Hola, mi nombre es " + nombre + " y tengo " + edad + " años.");
     }

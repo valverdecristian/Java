@@ -20,6 +20,7 @@ public class EstructuraFor {
             System.out.println("Elemento: " + numeros[i]);
         }
 
+
         // con FOR-EACH no se necesita manejar indices manualmente
         // Pero no se puede modificar los valores dentro del array.
         System.out.println("FOR-EACH:");
@@ -28,7 +29,6 @@ public class EstructuraFor {
         for (int num : numeros2) {
             System.out.println("Número: " + num);
         }
-
     }
 }
 

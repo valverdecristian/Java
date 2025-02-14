@@ -12,3 +12,8 @@ public class ArreglosMultidimensionales {
         System.out.println(Arrays.deepToString(matriz));
     }
 }
+
+/** METODO Array.deepToString()
+ *  se usa para imprimir matrices
+ *
+ */

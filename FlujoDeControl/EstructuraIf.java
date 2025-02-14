@@ -1,5 +1,5 @@
 package FlujoDeControl;
-public class EstructuraSelectiva {
+public class EstructuraIf {
     public static void main(String[] args) {
         int edad = 18;
 
