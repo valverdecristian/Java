@@ -11,7 +11,8 @@ class Perro extends Animal {
     }
 
 
-    // sobreescribe un metodo con override
+    // sobreescribe un metodo con override =
+    // polimorfismo en tiempo de ejecicion
     @Override
     public String hacerSonido() {
         return "El perro ladra";
@@ -24,5 +25,18 @@ class Perro extends Animal {
 
     public String correr() {
         return "El perro esta corriendo";
+    }
+
+    // comparando objetos
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Perro) {
+            // no basta con solo preguntar si obj es intancia de Perro
+            // sino que tambien tenemos que hacer el casting
+            var p = (Perro)obj;
+            return this.nombre.equals(p.nombre);
+        }
+
+        return super.equals(obj);
     }
 }

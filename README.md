@@ -1,20 +1,22 @@
 # Java (Academia Hola Mundo)
 
-Java es fuertemente tipado
-
 Caracteristicas:
 * Lenguaje orientado a objetos.
 * Es multiplataforma.
 * Manejo automático de memoria.
 * Evolución permanente (Actualmente version 22).
+* Fuertemente tipado.
 
 <br>
 
-Java tiene dos versiones:
+Versiones de Java:
 * JSE (Java Standard Edition)
-    - Usos comunes: Aplicaciones de escritorio, herramientas de desarrollo, aplicaciones científicas, y cualquier aplicación que no necesite servicios avanzados o consumo de un servidor.
+    - Usos: Aplicaciones de escritorio, herramientas de desarrollo, aplicaciones científicas, y cualquier aplicación que no necesite servicios avanzados o consumo de un servidor.
 * JEE/Jakarta (Java Enterprise Edition)
-    - Usos comunes: Aplicaciones web, aplicaciones empresariales, sistemas de comercio electrónico, aplicaciones de banca en línea, sistemas de gestión empresarial, y cualquier aplicación que requiera transacciones, seguridad, y escalabilidad.
+    - Usos: Aplicaciones web, aplicaciones empresariales, sistemas de comercio electrónico, aplicaciones de banca en línea, sistemas de gestión empresarial, y cualquier aplicación que requiera transacciones, seguridad, y escalabilidad.
+    - Incluye tecnologias como Servlets, JSP, EJB y frameworks como Spring.
+
+<br>
 
 un IDE es un entorno de desarrollo integrado. Es una aplicación informática que proporciona servicios integrales para facilitarle al desarrollador o programador el desarrollo de software.
 Ejemplos de un IDE para Java: Netbeans, Intellij o Eclipse.
@@ -25,26 +27,45 @@ Ejemplos de un IDE para Java: Netbeans, Intellij o Eclipse.
 * Un IDE.
 * JRE (Java Runtime Environment).
 * JDK (Java Development Kit): Incluye el compilador y JRE.
-* Antes (hasta Java 8) habia que instalar ambos programas, ahora JRE viene incluido en JDK.
+    - Desde Java 9, el JRE viene incluido en JDK.
 
 <br>
 
-Orientación a Objetos:
+POO en Java:
 * Clases: se escriben en PascalCase.
     - Convencion:
         * atributos.
-            - constantes.
+            - constantes (static final).
             - propiedades de instancia.
         * constructor.
         * getters y setters.
-        * metodos: publicos y luego los privados; finalmente los estaticos.
+        * metodos: publicos, privados y finalmente los estaticos.
 * Objetos: instancia de clase. Los objetos tienen Propiedades y Metodos(). Los objetos se escriben en camelCase.
 
 <br>
 
 Metodos():
-* De Clase: se les llama static.
-* De los objetos: no es necesario "static".
+* De Clase: se definen con "static".
+* De Objetos: dependen de una instancia.
+
+<br>
+
+Control de flujo:
+ * Operadores de comparacion (==, !=, <, >, etc.)
+ * Operadores logicos (&&, ||, !)
+ * Condicionales: if, if-else, if-else if-else, Switch.
+ * Operador ternario (? :)
+ * Bucles (for, while, do-while, for-each)
+ * Palabras claves (break y continue)
+
+<br>
+
+Entrada de datos con Scanner:
+* se debe importar: java.util.Scanner;
+* crear un objeto: Scanner scanner = new Scanner(System.in);
+* Metodos comunes:
+    - scanner.nextLine(); (Devuelve un String)
+    - scanner.nextInt(); (Devuelve un int), etc.
 
 <br>
 
@@ -60,28 +81,6 @@ Formato de numeros:
 
 <br>
 
- Clase Scanner:
-  - se debe importar la clase: java.util.Scanner;
-  - crear un objeto Scanner: Scanner scanner = new Scanner(System.in);
-  - leer datos desde la consola: scanner.nextLine(); (devuelve un String)
-    si queremos obtener otro tipo debemos usar otro metodo.
-
-<br>
-
-Control de flujo:
- * Operadores de comparacion.
- * Operadores logicos.
- * if / if-else if-else.
- * Operador ternario.
- * Switch.
- * For.
- * While.
- * Do While.
- * Break y Continue.
- * For each.
-
-<br>
-
 Métodos:
 * Method Overloading (Sobrecarga de metodos).
 * Constructor Overloading (Sobrecarga de constructores)
@@ -90,18 +89,6 @@ Métodos:
 
 Paquetes:
 * se debe hacer referencia al paquete que pertenece.
-
-<br>
-
-Modificadores de Acceso:
-* las Clases:
-    - publicas: cualquier otra clase de nuestra app puede utilizarla
-    - sin especificar: tienen acceso otras clases del mismo paquete
-* Propiedades y metodos:
-    - default: es cuando no agregamos nada (acceso desde el mismo paquete)
-    - public: cualquier otra clase dentro de nuestra app
-    - private: acceso dentro de la misma clase
-    - protected: acceso dentro del mismo paquete o subclases.
 
 <br>
 
@@ -180,3 +167,78 @@ Downcasting (Conversión de Superclase a Subclase)
         - Perro miPerro = (Perro) miAnimal; // Downcasting explícito
         - miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
 * Usar "instanceof" antes de un downcasting para evitar errores.
+
+<br>
+
+Comparando objetos:
+* Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo @override de equals
+
+<br>
+
+Polimorfismo:
+* Es uno de los pilares fundamentales de la POO.
+* Permite que una misma accion se comporte de manera diferente según el objeto que la ejecute.
+* Tipos:
+    - Polimorfismo en tiempo de compilacion (Method overloading | sobrecarga de metodos)
+    - Polimorfismo en tiempo de ejecucion (Method overriding | sobreescritura de métodos usando herencia)
+
+<br>
+
+Clases y Métodos Abstractos:
+* Se utilizan para definir comportamientos genéricos que deben ser implementados por las subclases.
+* Clase Abstracta: es una clase que no puede instanciarse directamente. Sirve como base para otras clases. puede contener METODOS ABSTRACTOS (sin implementacion == solo se declara, no tiene llaves ni cuerpo) y metodos concretos (con implementacion dentro de la clase abstracta, osea posee un cuerpo {} con instrucciones que se ejecutaran cuando se llame al método.)
+* Metodo Abstracto: debe ser implementado por las subclases.
+
+<br>
+
+Final (Class & Method):
+* Una clase final no puede ser heredada.
+* NO se puede extender (no puede tener subclases).
+* Método final: No puede ser sobrescrito.
+* Atributo final: No puede ser modificado despues de su asignacion inicial.
+
+<br>
+
+Interfaces:
+* Es una estructura que define un conjunto de métodos abstractos que una clase debe implementar. Sirve como un contrato que las clases que la implementan deben seguir.
+* No pueden contener implementacion en sus metodos (excepto default o static).
+* Se implementan con "implements" en una clase.
+* Una clase puede implementar multiples interfaces.
+
+<br>
+
+Codigo estrechamente acoplado (Tightly coupled code):
+* Se refiere a un diseño en el que los componentes o clases de un sistema dependen fuertemente entre sí, lo que hace que cualquier cambio en una parte afecte a otras. Esto reduce la flexibilidad y dificulta el mantenimiento del código.
+* Problemas:
+    - Dificil de mantener.
+    - Menos reutilizable.
+    - Más dificil de probar: es complicado hacer pruebas unitarias.
+* ✅ La solucion: Loosely Coupled Code (Código Debilmente Acoplado).
+    - Podemos usar inyeccion de dependencias e interfaces.
+    - Beneficios: mas flexible, mas reutilizable, mas facil de probar.
+* Conclusion: Usar interfaces, inyeccion de dependencias y principios SOLID ayuda a reducir el acoplamiento y hacer el código mas escalable.
+
+<br>
+
+Inyeccion de Dependencias (Dependency Injection)
+* Es un patrón de diseño que permite reducir el acoplamiento entre clases proporcionando las dependencias desde el exterior en lugar de instanciarlas dentro de la propia clase.
+* En proyectos grandes, frameworks como Spring manejan las dependencias automaticamente.
+
+<br>
+
+Interface:
+* Define métodos abstractos y constantes.
+* tiene multiples convenciones, depende del contexto cual deberiamos usar.
+    - Ejemplo: IAtenderMesa, AtenderMesaInterface, etc.
+    - En Java la convencion es que la interfaz termine en "Able"
+* Se implementan con "implements".
+* Los metodos no necesitan el modificador "public" porque es redundante.
+* Una clase puede implementar multiples interfaces.
+* Las variables en interfaces son siempre "public static final" (constantes).
+* Desde Java 8, se pueden agregar métodos con implementacion usando "default" y "static".
+    - "default": para usar el metodo por defecto.
+    - "static": para llamar al metodo estatico.
+
+<br>
+
+Genericos

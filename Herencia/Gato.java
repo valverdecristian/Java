@@ -10,7 +10,8 @@ class Gato extends Animal {
     }
 
 
-    // sobreescribe un metodo con override
+    // sobreescribe un metodo con override =
+    // polimorfismo en tiempo de ejecicion
     @Override
     public String hacerSonido() {
         // reutilizando un metodo de la clase padre (super)

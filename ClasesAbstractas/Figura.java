@@ -1,7 +1,9 @@
 package ClasesAbstractas;
 
+// la clase Figuta no puede instanciarse directamente porque es abstracta.
 public abstract class Figura {
-    // Método abstracto (sin implementación)
+    // Método abstracto (sin implementación == SOLO SE DECLARA == no tiene cuerpo)
+    // debe ser implementado por las subclases
     public abstract double calcularArea();
 
     // Método concreto (con implementación)

@@ -45,6 +45,7 @@ public class Animal {
         System.out.println(miAnimal2.hashCode());
 
         // al tener el mismo hashCode y usar equals dara true
+        // el resultado cambia ya que sobrescribimos equals
         System.out.println(miAnimal.equals(miAnimal2));
 
         System.out.println(miAnimal.toString());
