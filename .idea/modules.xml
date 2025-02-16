@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/EjerciciosEstaticos/EjerciciosEstaticos.iml" filepath="$PROJECT_DIR$/EjerciciosEstaticos/EjerciciosEstaticos.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Generics/Generics.iml" filepath="$PROJECT_DIR$/Generics/Generics.iml" />
       <module fileurl="file://$PROJECT_DIR$/LENGUAJES.iml" filepath="$PROJECT_DIR$/LENGUAJES.iml" />
     </modules>
   </component>

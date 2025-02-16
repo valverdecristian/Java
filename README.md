@@ -241,4 +241,37 @@ Interface:
 
 <br>
 
-Genericos
+Generics (Genericos):
+* Permiten definir clases, interfaces y metodos que pueden trabajar con diferentes tipos de datos sin necesidad de duplicar codigo.
+* Estas listas solo pueden contener elementos del tipo especificado (String, Integer, etc.)
+* Codigo reutilizable: mismo codigo para diferentes tipos sin duplicar lógica.
+* Evita conversiones explicitas (no castings manuales).
+* Codigo facil de entender.
+* Solo pueden usarse con tipos de referencia: String, Integer, Double, etc.
+* No se pueden usar tipos primitivos: int, double, char, etc.
+* Para trabajar con primitivos, usamos sus clases contenedoras (Wrapper Classes). Ejemplo: Float, Boolean, Double, etc.
+* Tambien podemos definir métodos genéricos: donde T es un parametro de tipo generico que se adapta a cualquier tipo de dato.
+* Restricciones: si queremos limitar que tipos podemos agregar la palabra "extends". Ejemplo: public class Lista < T extends Number > {...}
+* Tambien puede extender interfaces: public class Garzon implements Interface {}
+* Si una clase necesita mas de un generico, se definen multiples parametros de tipo dentro de los corchetes angulares.
+    - Ejemplo: public class Par < T,U >
+    - Uso: Par < String, Integer >
+    - Con Restriccion: public class Par < T extends Number, U extends Number >
+* Metodos Genericos: permiten definir operaciones reutilizables sin necesidad de que toda la clase sea genérica. Se usa <> justo antes del tipo de retorno.
+    - Ejemplo: public static < T > void imprimirElemento(T elemento) {...}
+* Utils como convencion: en muchos proyectos se usa Utils o Helper para agrupar métodos (estaticos) utilitarios.
+* Wildcards (?): son comodines usados en genéricos cuando queremos trabajar con tipos genericos sin especificar un tipo exacto. Se usa en parametros de metodos cuando queremos flexibilidad sin definir un tipo especifico.
+    - Unbounded (?): para listas de cualquier tipo (solo lectura, no add).
+    - Upper Bounded (? extends T): solo permite leer elementos (no se puede agregar elementos).
+    - Lower Bounded (? super T): para agregar elementos (no se puede leer elementos).
+
+<br>
+
+Boxing & Unboxing:
+* Boxing: es el proceso de convertir un tipo primitivo en su clase contenedora.
+* Unboxing: convertir una clase contenedora en su tipo primitivo.
+* Java hace esto automaticamente, por lo que no es necesario hacer conversiones manuales.
+
+<br>
+
+Excepciones
