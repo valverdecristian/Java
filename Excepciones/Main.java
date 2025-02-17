@@ -4,7 +4,7 @@ public class Main {
     public static void main(String[] args) {
 
         Demo.comprobado();
-
+        Demo.validarEdad(19);
 
         try {
             int resultado = 10 / 0; // 🚨 Error: división por cero
@@ -32,14 +32,18 @@ public class Main {
             System.out.println("Ocurrió un error específico.");
         }
         
-        // personalizada
+        // Exception personalizada
         Validador validador = new Validador();
 
         try {
             validador.verificar(false);
         } catch (Exception e) {
-            // TODO: handle exception
             System.out.println("Excepcion atrapada: " + e.getMessage());
         }
+
+        // otra clase personalizada
+        try (MiRecurso recurso = new MiRecurso()) {
+            recurso.usar();
+        } // Aquí se llama automáticamente a recurso.close()
     }
 }

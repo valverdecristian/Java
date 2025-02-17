@@ -1,9 +1,9 @@
 package Excepciones;
 
 public class Validador {
-    public void verificar(boolean condicion) throws MiExcepcion {
+    public void verificar(boolean condicion) throws MiExcepcionComprobada {
         if (!condicion) {
-            throw new MiExcepcion("Ocurrió un error personalizado.");
+            throw new MiExcepcionComprobada("Ocurrió un error personalizado.");
         }
     }
 }
