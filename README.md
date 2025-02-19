@@ -43,40 +43,40 @@ Ejemplos de un IDE para Java: Netbeans, Intellij o Eclipse.
 <br>
 
 Metodos():
-* De Clase: se definen con "static".
+* De Clase: se definen con `static`.
 * De Objetos: dependen de una instancia.
 
 <br>
 
 ## 📌 Control de flujo:
- * Operadores de comparacion (==, !=, <, >, etc.)
- * Operadores logicos (&&, ||, !)
- * Condicionales: if, if-else, if-else if-else, Switch.
- * Operador ternario (? :)
- * Bucles (for, while, do-while, for-each)
- * Palabras claves (break y continue)
+ * Operadores de comparacion: `==, !=, <, >, etc.`
+ * Operadores logicos: `&&, ||, !`
+ * Condicionales: `if, if-else, if-else if-else, Switch`
+ * Operador ternario: `? :`
+ * Bucles: `for, while, do-while, for-each`
+ * Palabras claves: `break y continue`
 
 <br>
 
 ## 📌 Entrada de datos con Scanner:
-* se debe importar: java.util.Scanner;
-* crear un objeto: Scanner scanner = new Scanner(System.in);
+* se debe importar: `java.util.Scanner;`
+* crear un objeto: `Scanner scanner = new Scanner(System.in);`
 * Metodos comunes:
-    - scanner.nextLine(); (Devuelve un String)
-    - scanner.nextInt(); (Devuelve un int), etc.
+    - `scanner.nextLine()` (Devuelve un String)
+    - `scanner.nextInt()` (Devuelve un int)
 
 <br>
 
 ### 📍 Clase Math
 
 ### 📍 Formato de numeros:
- - String.format()
- - DecimalFormat
- - NumberFormat.getCurrencyInstance(): para monedas locales.
- - NumberFormat.getPercentInstance(): para porcentajes.
+ - `String.format()`
+ - `DecimalFormat`
+ - `NumberFormat.getCurrencyInstance()`: para monedas locales.
+ - `NumberFormat.getPercentInstance()`: para porcentajes.
 
 ### 📍 Overloading (Sobrecarga)
-* Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes parametros (cantidad o tipo)
+Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes parametros (cantidad o tipo).
 
 * Method Overloading (Sobrecarga de metodos).
     - Podemos definir varios metodos con el mismo nombre, pero con diferentes parametros.
@@ -89,9 +89,9 @@ Metodos():
 * Sirve para organizar clases e interfaces en grupos.
 * Mejora la modularidad.
 * Cada archivo de Java debe hacer referencia al paquete que pertenece.
-* Se puede importar un paquete en otra clase con la palabra clave "import"
-    - Ejemplo: import miPaquete.MiClase; // importa una clase de "miPaquete".
-    - Otro Ej: import miPaquete.*; // importa todas las clases de "miPaquete".
+* Se puede importar un paquete en otra clase con la palabra clave `import`.
+    - Ejemplo: `import miPaquete.MiClase;` // importa una clase de "miPaquete".
+    - Otro Ej: `import miPaquete.*;` // importa todas las clases de "miPaquete".
 
 ### 📍 Estructura de carpetas
 
@@ -108,19 +108,19 @@ Metodos():
 ## 📌 Herencia:
 * Es un concepto de la POO, que permite que una clase derive (herede) caracteristicas y comportamientos de otra.
 * Esto ayuda a reutilizar codigo.
-* Se implementa usando la palabra clave "extends"
+* Se implementa usando la palabra clave `extends`
 * La superclase proporciona atributos y métodos.
 * La subclase hereda esos atributos y metodos, y puede agregar o modificar su porpio comportamiento.
-* Para cambiar el comportamiento de un metodo heredado usamos @override.
-* Uso de "super" para acceder a la superclase:
+* Para cambiar el comportamiento de un metodo heredado usamos `@override`.
+* Uso de `super` para acceder a la superclase:
     - que permite llamar al constructor de la superclase.
     - permite acceder a metodos de la superclase si fueron sobreescritos.
 
 ### 📍  Tipos de herencia
 * Java no admite herencia multiple, pero si admite herencia jerarquica.
-    - Simple -> class Perro extends Animal {}
-    - Jerarquica -> class Perro extends Animal, class Gato extends Animal.
-* Si se necesita compartir codigo entre varias clases, se puede usar interfaces (con implements)
+    - Simple -> `class Perro extends Animal {}`
+    - Jerarquica -> `class Perro extends Animal`, `class Gato extends Animal`.
+* Si se necesita compartir codigo entre varias clases, se puede usar interfaces (con `implements`)
 
 <br>
 
@@ -129,60 +129,64 @@ Metodos():
 * Cuando creamos una nueva instancia de nuestra clase base podemos ver que tenemos acceso a metodos de Object.
 
 ### 📍 Metodos
-* equals(Object obj): compara si dos objetos son iguales. Por defecto, compara si son la misma instancia en memoria (misma referencia), pero se puede sobrescribir para comparar valores (sobrescribir equals).
-* hashCode(): devuelve un numero entero que representa la posicion del objeto en memoria. Se usa en estructuras como HashMap y HashSet.
-    - Si equals es sobrescrito, hashCode también debe serlo para mantener coherencia.
-* toString(): devuelve una representación en texto del objeto. Por defecto, imprime el nombre de la clase y su referencia en memoria, pero se puede sobrescribir. (@override de toString)
-* getClass(): devuelve la clase del objeto en tiempo de ejecución.
+* `equals(Object obj)`: compara si dos objetos son iguales. Por defecto, compara si son la misma instancia en memoria (misma referencia), pero se puede sobrescribir para comparar valores (sobrescribir equals).
+* `hashCode()`: devuelve un numero entero que representa la posicion del objeto en memoria. Se usa en estructuras como `HashMap` y `HashSet`.
+    - Si `equals` es sobrescrito, `hashCode` también debe serlo para mantener coherencia.
+* `toString()`: devuelve una representación en texto del objeto. Por defecto, imprime el nombre de la clase y su referencia en memoria, pero se puede sobrescribir. (`@override de toString`)
+* `getClass()`: devuelve la clase del objeto en tiempo de ejecución.
 
 ### 📍 Orden en el cual se ejecutan los contructores en Herencia.
 * Siempre se va a ejecutar 1ro el constructor de la superclase y luego se va a ejecutar el constructor de la subclase.
-* Cuando usamos la palabra clave "super" estamos llamando explicitamente al constructor de la superclase desde la subclase. Sino Java llama automaticamente al constructor SIN PARAMETROS de la superclase.
-    - Si la superclase no tiene un constructor sin parametros, es obligatorio llamar a super(...) en la subclase.
+* Cuando usamos la palabra clave `super` estamos llamando explicitamente al constructor de la superclase desde la subclase. Sino Java llama automaticamente al constructor SIN PARAMETROS de la superclase.
+    - Si la superclase no tiene un constructor sin parametros, es obligatorio llamar a `super(...)` en la subclase.
 
 ### 📍 Modificadores de acceso:
-* private: solo es accesible en la misma clase.
+* `private`: solo es accesible en la misma clase.
     - Uso común: atributos y metodos internos que no deben ser modificados desde fuera.
-* public: accesible desde cualquier parte del código.
+* `public`: accesible desde cualquier parte del código.
     - Uso común: métodos y atributos que deben ser accesibles globalmente.
-* protected: accesible en la misma clase, en el mismo paquete y en subclases (herencia), pero no es accesible desde otras clases.
+* `protected`: accesible en la misma clase, en el mismo paquete y en subclases (herencia), pero no es accesible desde otras clases.
     - Uso común: métodos y atributos que deben ser accesibles en clases hijas, pero no en otra clases externas.
     - Problemas/MALA PRACTICA:
         * Rompe el principio de encapsulamiento.
         * Crea dependencias no deseadas.
         * Alternativa mas segura: usar private
-* default (sin modificador): solo es accesible en la misma clase y en el mismo paquete.
+* `default` (sin modificador): solo es accesible en la misma clase y en el mismo paquete.
     - Uso común: métodos y clases auxiliares dentro del mismo paquete.
 
 ### 📍 Method override:
-* No es estrictamente necesario usar @override cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
-    - Ayuda a detectar errores en tiempo de compilacion.
-    - Mejora la legibilidad del código.
-    - Evita confusion con sobrecarga (overloading)
+No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
+* ✅ Ayuda a detectar errores en tiempo de compilacion.
+* ✅ Mejora la legibilidad del código.
+* ✅ Evita confusion con sobrecarga (overloading)
 
 <br>
 
 ## 📌 Conversión de Objetos
 
 ### 📍 Upcasting (Conversion de Subclase a Superclase)
-* Es cuando convertimos un objeto de una subclase en un objeto de su superclase.
-    - Se hace automaticamente (casting implicito).
-    - No se pierde informacion, pero se limitan los metodos disponibles a los de la superclase.
-    - Ejemplo: Animal miAnimal = new Perro(); // Upcasting automático.
-    - miAnimal puede acceder a metodos de Animal, pero no se puede acceder a metodos de Perro (se trata como un Animal)
+Es cuando convertimos un objeto de una subclase en un objeto de su superclase.
+Se hace automaticamente (casting implicito).
+No se pierde informacion, pero se limitan los metodos disponibles a los de la superclase. Ejemplo:
+
+    Animal miAnimal = new Perro(); // Upcasting automático.
+
+* miAnimal puede acceder a metodos de Animal, pero no se puede acceder a metodos de Perro (se trata como un Animal)
 
 ### 📍 Downcasting (Conversión de Superclase a Subclase)
-* Es cuando convertimos un objeto de una superclase en un objeto de su subclase.
-    - No es automatico (requiere casting explicito)
-    - Puede causar ClassCastException.
-    - Ejemplo:
-        - Animal miAnimal = new Perro(); // Upcasting
-        - Perro miPerro = (Perro) miAnimal; // Downcasting explícito
-        - miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
+Es cuando convertimos un objeto de una superclase en un objeto de su subclase. <br>
+No es automatico (requiere casting explicito) <br>
+Puede causar `ClassCastException`. <br>
+Ejemplo:
+
+    Animal miAnimal = new Perro(); // Upcasting
+    Perro miPerro = (Perro) miAnimal; // Downcasting explícito
+    miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
+
 * Usar "instanceof" antes de un downcasting para evitar errores.
 
 ### 📍 Comparando objetos:
-* Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo @override de equals
+Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo @override de equals
 
 <br>
 
@@ -399,6 +403,71 @@ Throwable
 
 ## 📌 Colecciones:
 
+![Texto alternativo](https://cdn.codegym.cc/images/article/b00f3a19-6b56-487b-9f66-cd339b17304e/800.webp)
+
+* Las colecciones en Java son estructuras `dinamicas` que permiten almacenar y manipular grupos de objetos de manera eficiente.
+* Son mas flexibles que los arrays (porque pueden cambiar de tamaño).
+* Las colecciones estan definidas dentro del paquete `java.util`.
+
+### 📍 Framework Collections
+- Iterable
+- Collection
+    - add
+    - remove
+    1) List
+    2) Queue (Cola o fila)
+        - FIFO (primer elemento)
+        - LIFO (ultimo elemento)
+    3) Set
+
+### 📍 Interface Collection
+
+La interfaz `Collection<E>` es una superinterfaz. Define metodos generales para manipular grupos de objetos, pero no se puede instanciar directamente.
+Caracteristicas:
+* Es generica (`<E>` representa el tipo de Elementos)
+* Proporciona métodos como `add()`,`remove()`, `contains()`, etc.
+* Se extiende en otras interfaces como `List`, `Set` y `Queue`.
+
+### 📍 Jerarquia de Collection
+
+             Collection<E>  (Interfaz principal)
+                  │
+        ┌─────────┴─────────┐
+        │                   │
+      List<E>              Set<E>
+    (Permite duplicados)  (No permite duplicados)
+        │                   │
+    ArrayList<E>        HashSet<E> 
+    LinkedList<E>       TreeSet<E>
+    Vector<E>           LinkedHashSet<E>
+
+✅ Aunque no se puede instanciar directamente, podemos utilizar una implementacion concreta como `ArrayList`, `HashSet`, etc.
+
+### 📍 Interface List
+* Es una subinterfaz de `Collection<E>`.
+* Permite elementos duplicados y mantiene el orden de inserción.
+* Cada elemento tiene un índice (como los arrays)
+
+Implementaciones comunes: <br>
+
+    `ArrayList<E>` mas rapido para busquedas, basado en arrays.
+    `LinkedList<E>` mas eficiente en inserciones/eliminaciones.
+    `Vector<E>` similar a `ArrayList`, pero sincronizado.
+
+* Metodos Principales de `List<E>`
+    - `add(E e)`: agrega un elemento.
+    - `get(int index)`: obtiene un elemento en una posicion especifica.
+    - `set(int index, E e)`: modifica un elemento.
+    - `remove(int index)`: elimina un elemento en una posicion especifica.
+    - `indexOf(E e)`: devuelve la posicion de un elemento.
+    - `size()`: devuelve la cantidad de elementos.
+
+### 📍 Interface Comparable
+* Permite ordenar objetos personalizados mediante el metodo `compareTo(T o)`.
+* Podemos crear una clase que implementa `Comparable`.
+    - `class MiClase implement Comparable<MiClase>`
+* Implementaciones deben sobrescribir `compareTo()`.
+* Se usa en `Collections.sort()` y estructuras de datos ordenadas (`TreeSet`, `TreeMap`)
 
 <br>
 

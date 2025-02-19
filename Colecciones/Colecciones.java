@@ -1,10 +1,11 @@
+package Colecciones;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
 public class Colecciones {
     public static void main(String[] args) {
-        // Lista
+        // Interface List
         ArrayList<String> lista = new ArrayList<>();
         lista.add("Java");
         lista.add("Python");
