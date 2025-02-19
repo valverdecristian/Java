@@ -1,4 +1,4 @@
-# Java (Academia Hola Mundo)
+# Java (Academia Hola Mundo) 🚀
 
 ## 📌 Caracteristicas:
 * Lenguaje orientado a objetos.
@@ -90,18 +90,22 @@ Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes
 * Mejora la modularidad.
 * Cada archivo de Java debe hacer referencia al paquete que pertenece.
 * Se puede importar un paquete en otra clase con la palabra clave `import`.
-    - Ejemplo: `import miPaquete.MiClase;` // importa una clase de "miPaquete".
-    - Otro Ej: `import miPaquete.*;` // importa todas las clases de "miPaquete".
+
+```java
+import miPaquete.MiClase; // importa una clase de "miPaquete".
+import miPaquete.*; // importa todas las clases de "miPaquete".
+```
 
 ### 📍 Estructura de carpetas
 
+```java
 /proyecto/src/  
  ├── miPaquete/  
  │   ├── MiClase.java  
  ├── otroPaquete/  
  │   ├── OtraClase.java  
  ├── Main.java  
-
+```
 
 <br>
 
@@ -109,8 +113,8 @@ Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes
 * Es un concepto de la POO, que permite que una clase derive (herede) caracteristicas y comportamientos de otra.
 * Esto ayuda a reutilizar codigo.
 * Se implementa usando la palabra clave `extends`
-* La superclase proporciona atributos y métodos.
-* La subclase hereda esos atributos y metodos, y puede agregar o modificar su porpio comportamiento.
+* La `superclase` proporciona atributos y métodos.
+* La `subclase` hereda esos atributos y metodos, y puede agregar o modificar su porpio comportamiento.
 * Para cambiar el comportamiento de un metodo heredado usamos `@override`.
 * Uso de `super` para acceder a la superclase:
     - que permite llamar al constructor de la superclase.
@@ -118,8 +122,13 @@ Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes
 
 ### 📍  Tipos de herencia
 * Java no admite herencia multiple, pero si admite herencia jerarquica.
-    - Simple -> `class Perro extends Animal {}`
-    - Jerarquica -> `class Perro extends Animal`, `class Gato extends Animal`.
+
+```java
+class Perro extends Animal {} // Simple
+
+class Perro extends Animal {} // Jerarquica
+class Gato extends Animal {} // Jerarquica
+```
 * Si se necesita compartir codigo entre varias clases, se puede usar interfaces (con `implements`)
 
 <br>
@@ -156,7 +165,7 @@ Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes
 
 ### 📍 Method override:
 No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
-* ✅ Ayuda a detectar errores en tiempo de compilacion.
+* ✅ Ayuda a detectar errores en tiempo de compilación.
 * ✅ Mejora la legibilidad del código.
 * ✅ Evita confusion con sobrecarga (overloading)
 
@@ -166,10 +175,12 @@ No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, 
 
 ### 📍 Upcasting (Conversion de Subclase a Superclase)
 Es cuando convertimos un objeto de una subclase en un objeto de su superclase.
-Se hace automaticamente (casting implicito).
+Se hace automaticamente (casting implicito). <br>
 No se pierde informacion, pero se limitan los metodos disponibles a los de la superclase. Ejemplo:
 
-    Animal miAnimal = new Perro(); // Upcasting automático.
+```java
+Animal miAnimal = new Perro(); // Upcasting automático.
+```
 
 * miAnimal puede acceder a metodos de Animal, pero no se puede acceder a metodos de Perro (se trata como un Animal)
 
@@ -179,14 +190,16 @@ No es automatico (requiere casting explicito) <br>
 Puede causar `ClassCastException`. <br>
 Ejemplo:
 
-    Animal miAnimal = new Perro(); // Upcasting
-    Perro miPerro = (Perro) miAnimal; // Downcasting explícito
-    miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
+```java
+Animal miAnimal = new Perro(); // Upcasting
+Perro miPerro = (Perro) miAnimal; // Downcasting explícito
+miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
+```
 
 * Usar "instanceof" antes de un downcasting para evitar errores.
 
 ### 📍 Comparando objetos:
-Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo @override de equals
+Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo `@override` de `equals`
 
 <br>
 
@@ -204,7 +217,9 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 * Se utilizan para definir comportamientos genéricos que deben ser implementados por las subclases.
 
 ### 📍  Clase Abstracta
-* es una clase que no puede instanciarse directamente. Sirve como base para otras clases. puede contener METODOS ABSTRACTOS (sin implementacion == solo se declara, no tiene llaves ni cuerpo) y metodos concretos (con implementacion dentro de la clase abstracta, osea posee un cuerpo {} con instrucciones que se ejecutaran cuando se llame al método.)
+* es una clase que no puede instanciarse directamente.
+* Sirve como base para otras clases.
+* Puede contener `METODOS ABSTRACTOS` (sin implementacion == solo se declara, no tiene llaves ni cuerpo) y `METODOS CONCRETOS` (con implementacion dentro de la clase abstracta, osea posee un cuerpo {} con instrucciones que se ejecutaran cuando se llame al método.)
 
 ### 📍  Metodo Abstracto
 * debe ser implementado por las subclases.
@@ -219,22 +234,21 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 
 ## 📌 Interfaces:
 * Es una estructura que define un conjunto de métodos abstractos que una clase debe implementar. Sirve como un contrato que las clases deben seguir.
-* Se implementan con "implements" en una clase.
+* Se implementan con `implements` en una clase.
 * Una clase puede implementar multiples interfaces.
 * No pueden contener implementacion en sus metodos (excepto default o static).
 * Define métodos abstractos y constantes.
-    - Las variables en interfaces son siempre "public static final" (constantes).
+    - Las variables en interfaces son siempre `public static final` (constantes).
 * Convenciones: depende del contexto cual deberiamos usar.
     - En Java suelen terminar en "Able". Ej: Runnable, Serializable.
-* Los metodos no necesitan el modificador "public" porque es redundante.
-* Una clase puede implementar multiples interfaces.
-* Desde Java 8, se pueden agregar métodos con implementacion usando "default" y "static".
-    - "default": para usar el metodo por defecto.
-    - "static": para llamar al metodo estatico.
+* Los metodos en interfaces no necesitan el modificador `public` porque es redundante.
+* Desde Java 8, se pueden agregar métodos con implementacion usando `default` y `static`.
+    - `default`: para usar el metodo por defecto.
+    - `static`: para llamar al metodo estatico.
 
 ### 📍 Codigo estrechamente acoplado (Tightly coupled code):
 * Se refiere a un diseño en el que los componentes o clases de un sistema dependen fuertemente entre sí, lo que hace que cualquier cambio en una parte afecte a otras. Esto reduce la flexibilidad y dificulta el mantenimiento del código.
-* Problemas:
+* 📢 Problemas:
     - Dificil de mantener.
     - Menos reutilizable.
     - Más dificil de probar: es complicado hacer pruebas unitarias.
@@ -246,29 +260,50 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 ### 📍 Inyeccion de Dependencias (Dependency Injection)
 * Es un patrón de diseño que permite reducir el acoplamiento entre clases proporcionando las dependencias desde el exterior en lugar de instanciarlas dentro de la propia clase.
 * En proyectos grandes, frameworks como Spring manejan las dependencias automaticamente.
+* ✅ EN DEFINITIVA: Para pasar la dependencia desde afuera (Inyeccion de Dependencias) usamos una interfaz. Por ejemplo: tenemos una clase llamada ProveedorA y ProveedorB que implementan una interfaz `ProveedorInterface`, luego tenemos otra clase (Tienda) que utiliza esta interfaz (en vez de Proveedor) y puede instanciar un objeto que implementa esta interfaz como lo son ProveedorA o ProveedorB.
 
 <br>
 
 ## 📌 Generics (Genericos):
 * Permiten definir clases, interfaces y metodos que pueden trabajar con diferentes tipos de datos sin necesidad de duplicar codigo.
-* Estas listas solo pueden contener elementos del tipo especificado (String, Integer, etc.)
+* Estas clases, interfaces o métodos solo pueden contener elementos del tipo especificado (String, Integer, etc.)
 * Codigo reutilizable: mismo codigo para diferentes tipos sin duplicar lógica.
 * Evita conversiones explicitas (no castings manuales).
 * Codigo facil de entender.
-* Solo pueden usarse con tipos de referencia: String, Integer, Double, etc.
-* No se pueden usar tipos primitivos: int, double, char, etc.
-* Para trabajar con primitivos, usamos sus clases contenedoras (Wrapper Classes). Ejemplo: Float, Boolean, Double, etc.
-* Tambien podemos definir métodos genéricos: donde T es un parametro de tipo generico que se adapta a cualquier tipo de dato.
-* Restricciones: si queremos limitar que tipos podemos agregar la palabra "extends". Ejemplo: public class Lista < T extends Number > {...}
-* Tambien puede extender interfaces: public class Garzon implements Interface {}
+* Solo pueden usarse con tipos de referencia: `String`, `Integer`, `Double`, etc.
+* No se pueden usar tipos primitivos: `int`, `double`, `char`, etc.
+* Para trabajar con primitivos, usamos sus clases contenedoras (`Wrapper Classes`). Ejemplo: `Float`, `Boolean`, `Double`, etc.
+* Tambien podemos definir métodos genéricos: donde `T` es un parametro de tipo generico que se adapta a cualquier tipo de dato.
+* Restricciones: si queremos limitar que tipos podemos agregar la palabra `extends`. Ejemplo:
+```java
+public class Lista <T extends Number> {}
+```
+* Tambien puede extender interfaces:
+```java
+public class Garzon implements Interface {}
+```
 * Si una clase necesita mas de un generico, se definen multiples parametros de tipo dentro de los corchetes angulares.
-    - Ejemplo: public class Par < T,U >
-    - Uso: Par < String, Integer >
-    - Con Restriccion: public class Par < T extends Number, U extends Number >
+```java
+public class Par <T, U> {
+    private T primero;
+    private T segundo;
+
+    // constructor
+    public Par(T primero, U segundo) {
+        this.primero = primero;
+        this.segundo = segundo;
+    }
+
+    // En el metodo main especificamos el tipo de cada generic
+}
+```
 
 ### 📍 Metodos Genericos
 * permiten definir operaciones reutilizables sin necesidad de que toda la clase sea genérica. Se usa <> justo antes del tipo de retorno.
-    - Ejemplo: public static < T > void imprimirElemento(T elemento) {...}
+    - Ejemplo:
+```java
+public static <T> void imprimirElemento(T elemento) {}
+```
 
 ### 📍 Utils como convencion
 * en muchos proyectos se usa Utils o Helper para agrupar métodos (estaticos) utilitarios.
@@ -277,11 +312,11 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 * son comodines usados en genéricos cuando queremos trabajar con tipos genericos sin especificar un tipo exacto.
 * Se usa en parametros de metodos cuando queremos flexibilidad sin definir un tipo especifico.
 
-    1) Unbounded (?)
+    1) Unbounded `?`
         - para listas de cualquier tipo (solo lectura, no add).
-    2) Upper Bounded (? extends T)
+    2) Upper Bounded `? extends T`
         - solo permite leer elementos (no se puede agregar elementos).
-    3) Lower Bounded (? super T)
+    3) Lower Bounded `? super T`
         - para agregar elementos (no se puede leer elementos).
 
 ### 📍 Boxing & Unboxing:
@@ -296,10 +331,10 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 * Las excepciones evitan que el programa falle inesperadamente.
 * Todas las excepciones heredan de Throwable.
 * Personalizadas:
-    - CONVENCION: NombreDelError"Exception"
+    - CONVENCION: `NombreDelError"Exception"`
 
 ### 📍 Jerarquia de Excepciones
-
+```java
 Throwable  
  ├── Exception (Excepciones comprobadas)  
  │   ├── IOException  
@@ -318,28 +353,32 @@ Throwable
      ├── StackOverflowError  
      ├── OutOfMemoryError  
      ├── (Otros...)  
+```
 
 <br>
 
 ### 📍 Diferencia clave
-* Exception: Se deben capturar o controlar obligatoriamente.
-* RuntimeException: Opcional manejarlas, pero pueden causar fallos si no se controlan.
-* Error: Errores fatales que no deben manejarse.
+* `Exception`: Se deben capturar o controlar obligatoriamente.
+* `RuntimeException`: Opcional manejarlas, pero pueden causar fallos si no se controlan.
+* `Error`: Errores fatales que no deben manejarse.
 
 ### 📍 Capturar Excepciones:
-1) try-catch
+1) `try-catch`
     - Si ocurre una excepcion dentro del try, se ejecuta el catch.
     - Si no hay excepcion, el catch se omite.
-2) finally
+2) `finally`
     - Se ejecuta siempre.
 3) Capturar multples excepciones
-    - try-catch-catch
-    - regla: Siempre poner "Exception" en el ultimo catch , porque captura cualquier error.
+    - `try-catch-catch`
+    - 📢 regla: Siempre poner `Exception` en el ultimo catch , porque captura cualquier error.
 
 ### 📍 Lanzar Excepciones (throw)
-    - Podemos forzar una excepcion con "throw".
+    - Podemos forzar una excepcion con `throw`.
     - Lanza una excepcion especifica.
-    - Ejemplo: throw new TipoDeExcepcion("Mensaje de error");
+    - Ejemplo:
+```java
+    throw new TipoDeExcepcion("Mensaje de error");
+```    
     - ✔ TipoDeExcepcion debe ser una subclase de Throwable
     - ✔ "Mensaje de error" es opcional.
 
