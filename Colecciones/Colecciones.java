@@ -11,11 +11,11 @@ public class Colecciones {
         lista.add("Python");
         System.out.println(lista);
 
-        // Conjunto
+        // Interface Set: no se permiten elementos duplicados
         HashSet<String> conjunto = new HashSet<>();
         conjunto.add("Java");
         conjunto.add("Python");
-        conjunto.add("Java");  // No se permiten duplicados
+        conjunto.add("Java");
         System.out.println(conjunto);
 
         // Mapa

@@ -508,6 +508,60 @@ Implementaciones comunes: <br>
 * Implementaciones deben sobrescribir `compareTo()`.
 * Se usa en `Collections.sort()` y estructuras de datos ordenadas (`TreeSet`, `TreeMap`)
 
+### 📍 Interface Set (Conjunto)
+Un `Set` representa un conjunto de elementos únicos, sin duplicados. <br>
+No garantiza orden: `HashSet` no mantiene un orden especifico. <br>
+Opera con conjuntos: operaciones como `union`, `diferencia` e `inserccion`.
+
+### 📍 Interface Deque (Cola de Doble extremos)
+Una `Deque` es una lista lineal que permite insertar y eliminar elementos desde ambos extremos. <br>
+Las Deques se pueden implementar utilizando arrays o listas enlazadas. <br>
+Puede actuar como una pila (Stack) o como una cola (Queue). <br>
+Implementaciones comunes: `ArrayDeque` y `LinkedList`. <br>
+
+### 📍 Interface Map 
+La interfaz `Map<K, V>` representa una estructura de datos clave-valor. <br>
+No extiende de Collections. <br>
+✔ Cada clave (K) es única (no puede haber claves duplicadas). <br>
+✔ Cada clave está asociada a un valor (V), que puede repetirse. <br>
+✔ Permite valores `null`, pero solo una clave `null`. <br>
+
+### 📍 Principales implementaciones de `Map<K, V>`
+* `HashMap<K, V>`: no garantiza orden, insercion rápida.
+* `LinkedHashMap<K, V>`: mantiene el orden de inserción.
+* `TreeMap<K, V>`: ordena las claves de forma natural o con un `Comparator`.
+* `Hashtable<K, V>`: similar a `HashMap`, pero sincronizado (hilo seguro).
+
+### 📍 Metodos Principales de `Map<K, V>`
+* `put(K clave, Valor)`: agrega un par clave-valor (si la clave ya existe, sobrescribe el valor).
+* `get(K clave)`: devuelve el valor asociado a la clave o null si no existe.
+* `remove(K clave)`: elimina el par clave-valor.
+* `containsKey(K clave)`: verifica si la clave existe en el Map.
+* `containsValue(V valor)`: verifica si el valor existe en el Map.
+
+### 📍 Recorriendo un `Map<K, V>`
+
+* Usando `entrySet()`
+```java
+for (Map.Entry<String, Integer> entrada : stock.entrySet()) {
+    System.out.println(entrada.getKey() + " -> " + entrada.getValue());
+}
+```
+
+* Usando `keySet()`
+```java
+for (String clave : stock.keySet()) {
+    System.out.println(clave);
+}
+```
+
+* Usando `values()`
+```java
+for (Integer cantidad : stock.values()) {
+    System.out.println(cantidad);
+}
+```
+
 <br>
 
 ## 📌 Expresiones Lambda:

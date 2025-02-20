@@ -34,9 +34,7 @@ public class Main {
         // usamos el for-each en las lineas 12-14
         // CONCLUSION: ambos hacen lo mismo
 
-
-        System.out.println("------------------------");
-        System.out.println("INTERFACE COMPARABLE");
+        System.out.println("--- INTERFACE COMPARABLE ---");
 
         List<EjemploComparable> listaComparable = new ArrayList<EjemploComparable>();
 
@@ -62,7 +60,15 @@ public class Main {
         // Refactorizado lineas 51 a 59 (con expresiones Lambdas)
         Collections.sort(listaComparable, Comparator.comparingInt(EjemploComparable::getEdad));
 
-
         System.out.println(listaComparable);
+
+
+        // SET
+        System.out.println("--- SET ---");
+        EjemploSet.run();
+
+
+        System.out.println("--- DEQUE ---");
+        EjemploDeque.run();
     }
 }
