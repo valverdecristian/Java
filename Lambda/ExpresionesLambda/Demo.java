@@ -1,7 +1,10 @@
 package Lambda.ExpresionesLambda;
 
 import java.util.List;
+import java.util.function.BinaryOperator;
 import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.UnaryOperator;
 
 public class Demo {
 
@@ -83,5 +86,41 @@ public class Demo {
 
     public static void sendPush(String id) {
         System.out.println("Enviando notificacion push"+id);
+    }
+
+    // PREDICATE
+    public static void combinacion() {
+        Predicate<String> tieneAt = s -> s.contains("@");
+        Predicate<String> minSeis = s -> s.length() > 5;
+
+        // verificar el dominio
+        Predicate<String> dominioTienePunto = s -> {
+            var at = s.indexOf("@");
+            if (at == -1) return false;
+
+            var dominio = s.substring(at);
+            System.out.println(dominio);
+            return dominio.indexOf(".") > 1 && dominio.length() > 4;
+        };
+
+        var nuevoPredicate = tieneAt.and(minSeis).and(dominioTienePunto);
+        System.out.println(nuevoPredicate.test("holamundo@x.co"));
+
+    }
+
+
+    // UNARY Y BINARY OPERATOR
+    public static void unaryAndBynary() {
+        
+        UnaryOperator<Integer> inc2 = a -> a + 2;
+        // Equivale a:
+        // Function<Integer, Integer> incrementar = a -> a + 2;
+        
+        BinaryOperator<Integer> potencia = (a,b) -> (int)Math.pow(a, b);
+        
+        System.out.println("incremento: " + inc2.apply(5));
+        System.out.println("resultado: " + potencia.apply(3, 3));
+
+
     }
 }
