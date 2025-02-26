@@ -67,32 +67,161 @@ Metodos():
 <br>
 
 ## 📌 Entrada de datos con Scanner:
-
+- El `Scanner` es una clase de Java que permite leer datos ingresados por el usuario.
 - se debe importar: `java.util.Scanner;`
 - crear un objeto: `Scanner scanner = new Scanner(System.in);`
 - Metodos comunes:
-  - `scanner.nextLine()` (Devuelve un String)
-  - `scanner.nextInt()` (Devuelve un int)
+  - `scanner.nextLine()`: leer una línea completa.
+  - `scanner.nextInt()`: leer un número entero
+  - `scanner.nextDouble()`: leer un número decimal.
+
+```java
+import java.util.Scanner;  // Importar Scanner
+
+public class EntradaDatos {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Crear Scanner
+
+        // Pedir y leer datos del usuario
+        System.out.print("Ingrese su nombre: ");
+        String nombre = scanner.nextLine();  // Capturar String
+        
+        System.out.print("Ingrese su edad: ");
+        int edad = scanner.nextInt();  // Capturar entero
+        
+        System.out.print("Ingrese su altura en metros: ");
+        double altura = scanner.nextDouble();  // Capturar decimal
+        
+        System.out.print("Ingrese su inicial: ");
+        char inicial = scanner.next().charAt(0);  // Capturar primer carácter
+        
+        // Mostrar la información capturada
+        System.out.println("\n📌 Datos ingresados:");
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Edad: " + edad + " años");
+        System.out.println("Altura: " + altura + " metros");
+        System.out.println("Inicial: " + inicial);
+        
+        scanner.close(); // Cerrar el Scanner (buena práctica)
+    }
+}
+```
+💡 Consideraciones importantes
+👉 Evitar errores al cambiar de tipo de datos: si se usa `nextInt()` o `nextDouble()` antes de `nextLine()`, puede quedar un salto de línea (`\n`) pendiente en el buffer. Se recomienda agregar un `scanner.nextLine()` despues de capturar números.
+
+```java
+System.out.print("Ingrese su edad: ");
+int edad = scanner.nextInt();
+scanner.nextLine(); // Consumir el salto de línea
+
+System.out.print("Ingrese su nombre: ");
+String nombre = scanner.nextLine();
+```
 
 <br>
 
 ### 📍 Clase Math
+La clase `Math` es una utilidad que proporciona métodos y constantes para realizar operaciones matemáticas comunes. No es necesario importarla ni crear una instancia para usarla.
 
-### 📍 Formato de numeros:
+* `Math.random()`: genera un número aleatorio entre `0.0` y `1.0`.
+* `Math.abs(x)`: devuelve el valor absoluto de `x`.
+* `Math.max(a,b)`: deuvelve el mayor entre `a` y `b`.
+* `Math.round(x)`: redondea al entero mas cercano.
+* `Math.pow(base, exp)`: calcula `base^exponente`.
+* `Math.sqrt(x)`: calcula la raiz cuadrada de `x`.
 
-- `String.format()`
-- `DecimalFormat`
-- `NumberFormat.getCurrencyInstance()`: para monedas locales.
-- `NumberFormat.getPercentInstance()`: para porcentajes.
+<br>
+
+### 📍 Formato de numeros
+
+- `String.format("formato", valor)`
+  * `%d`: entero.
+  * `%f`: numero decimal.
+  * `%nf`: numero decimal con `n` decimales.
+
+- `DecimalFormat`: permite definir formatos personalizados para números, como la cantidad de decimales o el uso de separadores.
+
+- `NumberFormat.getCurrencyInstance()`: permite dar formato de monera local a un número.
+
+- `NumberFormat.getPercentInstance()`: permite formatear un numero como porcentaje.
+
+<br>
 
 ### 📍 Overloading (Sobrecarga)
-
 Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes parametros (cantidad o tipo).
 
 - Method Overloading (Sobrecarga de metodos).
-  - Podemos definir varios metodos con el mismo nombre, pero con diferentes parametros.
+  - Podemos definir varios metodos con el mismo nombre, pero con diferente numero o tipo de parametros.
+
+```java
+public class Calculadora {
+    public int sumar(int a, int b) {
+        return a + b;
+    }
+    
+    // Método sobrecargado para sumar tres números enteros
+    public int sumar(int a, int b, int c) {
+        return a + b + c;
+    }
+    
+    // Método sobrecargado para sumar dos números decimales
+    public double sumar(double a, double b) {
+        return a + b;
+    }
+
+    public static void main(String[] args) {
+        Calculadora calc = new Calculadora();
+        
+        System.out.println("Suma de 2 enteros: " + calc.sumar(5, 10));       // 15
+        System.out.println("Suma de 3 enteros: " + calc.sumar(5, 10, 15));  // 30
+        System.out.println("Suma de 2 decimales: " + calc.sumar(5.5, 2.2)); // 7.7
+    }
+}
+```
+
 - Constructor Overloading (Sobrecarga de constructores).
   - Se usa cuando queremos inicializar objetos de diferentes maneras.
+
+```java
+public class Persona {
+    String nombre;
+    int edad;
+
+    // Constructor sin parámetros (valores por defecto)
+    public Persona() {
+        this.nombre = "Desconocido";
+        this.edad = 0;
+    }
+
+    // Constructor con un parámetro (nombre)
+    public Persona(String nombre) {
+        this.nombre = nombre;
+        this.edad = 0;
+    }
+
+    // Constructor con dos parámetros (nombre y edad)
+    public Persona(String nombre, int edad) {
+        this.nombre = nombre;
+        this.edad = edad;
+    }
+
+    public void mostrarInfo() {
+        System.out.println("Nombre: " + nombre + ", Edad: " + edad);
+    }
+
+    public static void main(String[] args) {
+        Persona p1 = new Persona();               // Usa el constructor sin parámetros
+        Persona p2 = new Persona("Ana");          // Usa el constructor con un parámetro
+        Persona p3 = new Persona("Carlos", 25);   // Usa el constructor con dos parámetros
+
+        p1.mostrarInfo(); // Nombre: Desconocido, Edad: 0
+        p2.mostrarInfo(); // Nombre: Ana, Edad: 0
+        p3.mostrarInfo(); // Nombre: Carlos, Edad: 25
+    }
+}
+```
+
+<br>
 
 ### 📍 Package (Paquete)
 
@@ -105,6 +234,8 @@ Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes
 import miPaquete.MiClase; // importa una clase de "miPaquete".
 import miPaquete.*; // importa todas las clases de "miPaquete".
 ```
+
+<br>
 
 ### 📍 Estructura de carpetas
 
@@ -131,6 +262,8 @@ import miPaquete.*; // importa todas las clases de "miPaquete".
   - que permite llamar al constructor de la superclase.
   - permite acceder a metodos de la superclase si fueron sobreescritos.
 
+<br>
+
 ### 📍 Tipos de herencia
 
 - Java no admite herencia multiple, pero si admite herencia jerarquica.
@@ -151,6 +284,8 @@ class Gato extends Animal {} // Jerarquica
 - Todas las clases extienden de Object (es redundante agregarlo)
 - Cuando creamos una nueva instancia de nuestra clase base podemos ver que tenemos acceso a metodos de Object.
 
+<br>
+
 ### 📍 Métodos
 
 - `equals(Object obj)`: compara si dos objetos son iguales. Por defecto, compara si son la misma instancia en memoria (misma referencia), pero se puede sobrescribir para comparar valores (sobrescribir equals).
@@ -159,13 +294,17 @@ class Gato extends Animal {} // Jerarquica
 - `toString()`: devuelve una representación en texto del objeto. Por defecto, imprime el nombre de la clase y su referencia en memoria, pero se puede sobrescribir. (`@override de toString`)
 - `getClass()`: devuelve la clase del objeto en tiempo de ejecución.
 
-### 📍 Orden en el cual se ejecutan los contructores en Herencia.
+<br>
+
+### 📍 Orden en el cual se ejecutan los contructores en Herencia
 
 - Siempre se va a ejecutar primero el constructor de la superclase y luego se va a ejecutar el constructor de la subclase.
 - Cuando usamos la palabra clave `super` estamos llamando explicitamente al constructor de la superclase desde la subclase. Sino Java llama automaticamente al constructor **SIN PARAMETROS** de la superclase.
   - Si la superclase no tiene un constructor sin parametros, es obligatorio llamar a `super(...)` en la subclase.
 
-### 📍 Modificadores de acceso:
+<br>
+
+### 📍 Modificadores de acceso
 
 - **private**: solo es accesible en la misma clase.
   - Uso común: atributos y metodos internos que no deben ser modificados desde fuera.
@@ -180,7 +319,9 @@ class Gato extends Animal {} // Jerarquica
 - **default** (sin modificador): solo es accesible en la misma clase y en el mismo paquete.
   - Uso común: métodos y clases auxiliares dentro del mismo paquete.
 
-### 📍 Method override:
+<br>
+
+### 📍 Method override
 
 No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
 
@@ -204,6 +345,8 @@ Animal miAnimal = new Perro(); // Upcasting automático.
 
 - miAnimal puede acceder a metodos de Animal, pero no se puede acceder a metodos de Perro (se trata como un Animal)
 
+<br>
+
 ### 📍 Downcasting (Conversión de Superclase a Subclase)
 
 Es cuando convertimos un objeto de una superclase en un objeto de su subclase. <br>
@@ -219,9 +362,41 @@ miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
 
 - Usar "instanceof" antes de un downcasting para evitar errores.
 
-### 📍 Comparando objetos:
+<br>
 
-Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo `@override` de `equals`
+### 📍 Comparando objetos
+Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo `@override` de `equals`, ya que por defecto `equals()` compara si dos referencias apuntan al mismo objeto en memoria.
+
+```java
+class Persona {
+    String nombre;
+
+    public Persona(String nombre) {
+        this.nombre = nombre;
+    }
+
+    // Sobrescribimos equals() para comparar por contenido
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) return true;  // Si es el mismo objeto, son iguales
+        if (obj == null || getClass() != obj.getClass()) return false; // Si no son del mismo tipo, son distintos
+        
+        Persona persona = (Persona) obj; // Convertimos obj a Persona
+        return this.nombre.equals(persona.nombre); // Comparamos los nombres
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Persona p1 = new Persona("Juan");
+        Persona p2 = new Persona("Juan");
+        Persona p3 = new Persona("Maria");
+
+        System.out.println(p1.equals(p2)); // true (ahora compara nombres)
+        System.out.println(p1.equals(p3)); // false (nombres diferentes)
+    }
+}
+```
 
 <br>
 
@@ -230,7 +405,7 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 - Es uno de los pilares fundamentales de la POO.
 - Permite que una misma accion se comporte de manera diferente según el objeto que la ejecute.
 
-### 📍 Tipos:
+### 📍 Tipos
 
 - Polimorfismo en tiempo de compilacion (Method overloading | sobrecarga de metodos)
 - Polimorfismo en tiempo de ejecucion (Method overriding | sobreescritura de métodos usando herencia)
@@ -251,7 +426,7 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 
 - debe ser implementado por las subclases.
 
-### 📍 Final (Class & Method):
+### 📍 Final (Class & Method)
 
 - Una clase final no puede ser heredada.
 - NO se puede extender (no puede tener subclases).
@@ -275,7 +450,7 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
   - `default`: para usar el metodo por defecto.
   - `static`: para llamar al metodo estatico.
 
-### 📍 Codigo estrechamente acoplado (Tightly coupled code):
+### 📍 Codigo estrechamente acoplado (Tightly coupled code)
 
 - Se refiere a un diseño en el que los componentes o clases de un sistema dependen fuertemente entre sí, lo que hace que cualquier cambio en una parte afecte a otras. Esto reduce la flexibilidad y dificulta el mantenimiento del código.
 - 📢 Problemas:
@@ -292,6 +467,50 @@ Vamos a querer comparar distinos objetos en base a propiedades que estos tengan.
 - Es un patrón de diseño que permite reducir el acoplamiento entre clases proporcionando las dependencias desde el exterior en lugar de instanciarlas dentro de la propia clase.
 - En proyectos grandes, frameworks como Spring manejan las dependencias automaticamente.
 - ✅ EN DEFINITIVA: Para pasar la dependencia desde afuera (Inyeccion de Dependencias) usamos una interfaz. Por ejemplo: tenemos una clase llamada `ProveedorA` y `ProveedorB` que implementan una interfaz `ProveedorInterface`, luego tenemos otra clase (`Tienda`) que utiliza esta interfaz (en vez de `Proveedor`) y puede instanciar un objeto que implementa esta interfaz como lo son `ProveedorA` o `ProveedorB`.
+
+```java
+class Tienda {
+    private Proveedor proveedor;
+
+    public Tienda(Proveedor proveedor) { // 🔹 Se inyecta la dependencia
+        this.proveedor = proveedor;
+    }
+
+    public void vender() {
+        proveedor.suministrarProducto();
+    }
+}
+
+// Interfaz
+interface Proveedor {
+    void suministrarProducto();
+}
+
+// Implementaciones
+class ProveedorA implements Proveedor {
+    @Override
+    public void suministrarProducto() {
+        System.out.println("Proveedor A: Enviando productos...");
+    }
+}
+
+class ProveedorB implements Proveedor {
+    @Override
+    public void suministrarProducto() {
+        System.out.println("Proveedor B: Enviando productos...");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Tienda tienda1 = new Tienda(new ProveedorA());
+        tienda1.vender(); // Proveedor A: Enviando productos...
+
+        Tienda tienda2 = new Tienda(new ProveedorB());
+        tienda2.vender(); // Proveedor B: Enviando productos...
+    }
+}
+```
 
 <br>
 
@@ -348,7 +567,7 @@ public static <T> void imprimirElemento(T elemento) {}
 
 - en muchos proyectos se usa Utils o Helper para agrupar métodos (estaticos) utilitarios.
 
-### 📍 Wildcards (?):
+### 📍 Wildcards (?)
 
 - son comodines usados en genéricos cuando queremos trabajar con tipos genericos sin especificar un tipo exacto.
 - Se usa en parametros de metodos cuando queremos flexibilidad sin definir un tipo especifico.
@@ -360,7 +579,7 @@ public static <T> void imprimirElemento(T elemento) {}
   3. Lower Bounded `? super T`
      - para agregar elementos (no se puede leer elementos).
 
-### 📍 Boxing & Unboxing:
+### 📍 Boxing & Unboxing
 
 - Boxing: es el proceso de convertir un tipo primitivo en su clase contenedora.
 - Unboxing: convertir una clase contenedora en su tipo primitivo.
@@ -407,7 +626,7 @@ Throwable
 - `RuntimeException`: Opcional manejarlas, pero pueden causar fallos si no se controlan.
 - `Error`: Errores fatales que no deben manejarse.
 
-### 📍 Capturar Excepciones:
+### 📍 Capturar Excepciones
 
 1. `try-catch`
    - Si ocurre una excepcion dentro del try, se ejecuta el catch.
@@ -647,7 +866,7 @@ push(message -> System.out.println(message)); // Expresión Lambda
 push(System.out::println); // Método por referencia
 ```
 
-### 💡 Tipos de referencia a métodos:
+### 💡 Tipos de referencia a métodos
 
 1. Referencia a un método estático
 
@@ -927,6 +1146,8 @@ Stream.generate(() -> new Random().nextInt(100))
 ### 📍 Peek()
 El metodo `peek()` se usa para depurar y visualizar elementos dentro de un Stream sin modificar su flujo. Es util para ver como se tranforman los elementos.
 
+<br>
+
 ### 📍 Reducers (metodos terminales)
 Los reducers en Java re refieren a operaciones de reducción que combinan los elementos de un `Stream` en un solo resultado. <br>
 Principales metodos:
@@ -934,11 +1155,15 @@ Principales metodos:
 * `collect()`: convierte un Stream en una colección.
 * metodos de resumen: `sum()`, `count()`, `min()`, `max()`.
 
+<br>
+
 ### 📍 Collectors
 Es una clase utilitaria en Java. <br>
 Proporciona metodos estaticos para recopilar elementos de un `Stream` en estructuras como listas, conjuntos, mapas o cadenas de texto. <br>
 Se usa con el método `collect()` de los Stream. <br>
 Permite agrupar (`groupingBy()`), particionar (`partitioningBy()`) y unir (`joining()`) datos de forma eficiente.
+
+<br>
 
 1) Convertir un Stream en List o Set
 
@@ -962,6 +1187,7 @@ public class EjemploCollectors {
     }
 }
 ```
+<br>
 
 2) Unir elementos en un String con joining()
 
@@ -980,6 +1206,8 @@ public class EjemploCollectorsJoining {
     }
 }
 ```
+
+<br>
 
 ### 📍 Range()
 El metodo `range()` pertenece a la clase IntStream y LongStream, dentro del paquete java.util.stream. Se usa para generar un flujo de numeros en un rango especifico, excluyendo el valor final. <br>
