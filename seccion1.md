@@ -166,7 +166,7 @@ System.out.println(entero); // 3
 <br>
 
 ### 📍 Tipo String: Cadenas
-* Los String son objetos de java, de tipo de referencia.
+* String es un tipo de referencia.
 * Se puede crear con `new String("texto")` o de forma literal `"texto"`.
 * Es una secuencia de caracteres.
 * Es una clase inmutable: cualquier cambio, ya sea de valor o invocando un metodo se va a crear una nueva instancia.
@@ -175,9 +175,213 @@ System.out.println(entero); // 3
   - 💡 tambien se podria usar `equalsIgnoreCase()`
 * 📢 Para concatenaciones frecuentes, es mejor usar `StringBuilder` o `StringBuffer` para mejorar el rendimiento.
 
+```java
+StringBuilder sb = new StringBuilder("Hola");
+sb.append(" Juan!");
+System.out.println(sb.toString()); // "Hola Juan!"
+```
+
 <br>
 
-### 📍 Clase Math (Métodos mas utiles)
+### 📍 Validación de String
+1) Validar si un String es nulo o vacío.
+  - Usando `isEmptry()`, verifica si la cadena está vacia, pero no detecta `null`.
+  - Desde Java 11 usando `isBlank()`, ademas de verificar si esta vacio, tambien detecta si solo contiene espacios en blanco.
+2) Validar si un String contiene solo números.
+  - Usando `matches()` con una expresión regular (`Regex`).
+3) Validar contenido especifico.
+  - Si contiene una palabra o caracter especifico. Usando `contains()`.
+  - Si comienza o termina con algo especifico. Usando `startsWith()` o `endsWith()`.
+
+```java
+// validar si un String es nulo, vacío o contiene solo espacios en blanco
+if (texto == null || texto.isBlank()) {
+    System.out.println("string invalido");
+}
+
+// validar si un String contiene solo numeros
+String numero = "12345";
+System.out.println(numero.matches("\\d+")); // true (solo dígitos)
+
+// validar formato con Expresiones Regulares
+String email = "usuario@email.com";
+boolean esValido = email.matches("^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+$");
+System.out.println(esValido); // true
+```
+
+<br>
+
+## 📌 Operadores
+
+1) Operadores aritmeticos: `+, -, *, /, %`
+2) Operadores de Asignación: `=, +=, -=, *=, /=, %=`
+3) Operadores de Incremento y Decremento: `++` y `--`
+    - pre: `++a, --a`
+    - post: `a++, a--`
+```java
+int a = 5;
+int b = ++a;  // Pre-incremento: a se incrementa antes de asignarse a b
+System.out.println(a); // 6
+System.out.println(b); // 6
+
+int c = 5;
+int d = c++;  // Post-incremento: c se asigna a d y luego se incrementa
+System.out.println(c); // 6
+System.out.println(d); // 5
+```
+
+4) Operadores Relacionales: `==, !=, <, >, <=, >=`
+5) Operadores Lógicos: `&&, ||, !, &, |`
+    - `&&, ||` hacen efecto corto-circuito.
+    - si la primera expresión de `&&` es false, no se evalua la 2da expresión.
+    - si la primera expresion de `||` es true, no se evalua la 2da expresión.
+6) Operador Ternario: `(condicion) ? valorTrue : valorFalse;`
+7) Operadores unarios: `+` y `-`
+```java
+int num = 5;
+System.out.println(-num); // -5
+```
+
+<br>
+
+### 📍 Operador instanceof
+El operador `instanceof` se usa para verificar si un objeto es una instancia de una clase, una interfaz, una clase abstracta o incluso de un subtipo.
+
+* Sintaxis:
+```java
+objeto instanceof Clase
+```
+
+* Si el objeto pertenece a la Clase o a una subclase de esta, devuelve `true`.
+* Ejemplo:
+```java
+class Animal {}
+class Perro extends Animal {}
+
+public class Main {
+    public static void main(String[] args) {
+        Animal miAnimal = new Perro();
+        
+        System.out.println(miAnimal instanceof Animal); // true
+        System.out.println(miAnimal instanceof Perro);  // true
+        System.out.println(miAnimal instanceof String); // false
+    }
+}
+```
+
+* 💡 Nota: instanceof no funciona con tipos primitivos, solo con clases y objetos.
+
+<br>
+
+## 📌 Flujo de control
+
+- Condicionales: `if, if-else, if-else if-else, switch case`
+- Bucles: `for, while, do-while, for-each`
+    * Utilizamos `for` cuando conocemos los limites del bucle.
+- Palabras claves: `break y continue`
+- Labels (etiquetas): se pueden aplicar en un for como en un while.
+
+```java
+bucle1: for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+        if (i == 2) {
+            continue bucle1;
+        }
+        System.out.println("i = " + i + " , j = " + j);
+    }
+}
+
+System.out.println("=======================");
+
+bucle2: for (int i = 0; i < 5; i++) {
+    for (int j = 0; j < 5; j++) {
+        if (i == 2) {
+            break bucle2;
+        }
+        System.out.println("i = " + i + " , j = " + j);
+    }
+}
+```
+
+<br>
+
+## 📌 Clases Wrapper (de Envoltorio)
+Son clases que permiten tratar los tipos primitivos como objetos.
+Proporcionan metodos utiles para manipular valores numericos, convertir tipos de datos y trabajar con colecciones que requieren objetos en lugar de primitivos (por ejemplo, en `ArrayList<Integer>`).
+
+### 📍 Tipos Primitivos y su correspondiente Clase Wrapper
+
+| **Tipo Primitivo** | **Clase Wrapper**  |
+|--------------------|-------------------|
+| `byte`            | `Byte`             |
+| `short`           | `Short`            |
+| `int`             | `Integer`          |
+| `long`            | `Long`             |
+| `float`           | `Float`            |
+| `double`          | `Double`           |
+| `char`            | `Character`        |
+| `boolean`         | `Boolean`          |
+
+<br>
+
+### 📍 Autoboxing y Unboxing
+✅ Autoboxing: Conversión automática de un tipo primitivo a su clase Wrapper. <br>
+✅ Unboxing: Conversión automática de un objeto Wrapper a su tipo primitivo. <br>
+
+```java
+// Autoboxing: convertir int a Integer
+Integer numObj = 10;  // Equivalente a Integer numObj = Integer.valueOf(10);
+
+// Unboxing: convertir Integer a int
+int numPrim = numObj; // Equivalente a int numPrim = numObj.intValue();
+```
+
+### 📍 Métodos útiles en las Clases Wrapper
+```java
+// conversion de String a primitivo
+int num = Integer.parseInt("123");      // Convierte "123" a int
+double d = Double.parseDouble("3.14");  // Convierte "3.14" a double
+boolean b = Boolean.parseBoolean("true"); // Convierte "true" a boolean
+
+// conversion de primitivo a String
+String s = Integer.toString(123);  // "123"
+String s2 = Double.toString(3.14); // "3.14"
+
+// obtener el valor del Wrapper
+Integer obj = 42;
+int prim = obj.intValue(); // Convierte Integer a int
+```
+
+### 📍 Metodo valueOf()
+Es un método estatico que recibe String o primitivo y retorna un Objeto Wrapper.
+```java
+Integer numero = Integer.valueOf("100"); // 100
+Double decimal = Double.valueOf("10.5"); // 10.5
+Boolean bool = Boolean.valueOf("true"); // true
+
+Integer num = Integer.valueOf(42); // 42
+Double pi = Double.valueOf(3.14); // 3.14
+```
+
+💡 Por lo general, `valueOf()` es preferible si necesitas un objeto Wrapper, mientras que `parseX()` es mejor cuando solo se necesita un valor primitivo.
+
+### 📍 Constantes de Integer
+```java
+Integer.MIN_VALUE
+Integer.MAX_VALUE
+```
+
+<br>
+
+## 📌 Clases Date y Calendar
+
+<br>
+
+## 📌 Clase System
+
+<br>
+
+## 📌 Clase Math
 La clase `Math` es una utilidad que proporciona métodos y constantes para realizar operaciones matemáticas comunes. No es necesario importarla ni crear una instancia para usarla.
 
 * `Math.random()`: genera un número aleatorio entre `0.0` y `1.0`.
@@ -201,17 +405,6 @@ La clase `Math` es una utilidad que proporciona métodos y constantes para reali
 - `NumberFormat.getCurrencyInstance()`: permite dar formato de monera local a un número.
 
 - `NumberFormat.getPercentInstance()`: permite formatear un numero como porcentaje.
-
-<br>
-
-## 📌 Control de flujo
-
-- Operadores de comparacion: `==, !=, <, >, etc.`
-- Operadores logicos: `&&, ||, !`
-- Condicionales: `if, if-else, if-else if-else, Switch`
-- Operador ternario: `? :`
-- Bucles: `for, while, do-while, for-each`
-- Palabras claves: `break y continue`
 
 <br>
 

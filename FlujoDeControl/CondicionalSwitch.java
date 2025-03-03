@@ -24,6 +24,10 @@ public class CondicionalSwitch {
             case 5:
                 System.out.println("Viernes");
                 break;
+            case 6:
+            case 7:
+                System.out.println("Fin de semana");
+                break;
             default:
                 System.out.println("Día no válido");
         }
