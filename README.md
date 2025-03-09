@@ -5,7 +5,7 @@
 ### [📌 Entrada de datos con Scanner](seccion1.md#-entrada-de-datos-con-scanner)
 ### [📌 Tipo String](seccion1.md#-tipo-string-cadenas)
 ### [📌 Clase Math](seccion1.md#-clase-math-métodos-mas-utiles)
-### [📌 Operadores](seccion1.md#-operadores)
+### [📌 Sec04Operadores](seccion1.md#-operadores)
 ### [📌 Flujo de control](seccion1.md#-control-de-flujo)
 
 <br>

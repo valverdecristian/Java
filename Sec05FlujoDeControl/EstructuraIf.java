@@ -1,4 +1,4 @@
-package FlujoDeControl;
+package Sec05FlujoDeControl;
 public class EstructuraIf {
     public static void main(String[] args) {
         int edad = 18;

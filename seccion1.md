@@ -211,11 +211,11 @@ System.out.println(esValido); // true
 
 <br>
 
-## 📌 Operadores
+## 📌 Sec04Operadores
 
-1) Operadores aritmeticos: `+, -, *, /, %`
-2) Operadores de Asignación: `=, +=, -=, *=, /=, %=`
-3) Operadores de Incremento y Decremento: `++` y `--`
+1) Sec04Operadores aritmeticos: `+, -, *, /, %`
+2) Sec04Operadores de Asignación: `=, +=, -=, *=, /=, %=`
+3) Sec04Operadores de Incremento y Decremento: `++` y `--`
     - pre: `++a, --a`
     - post: `a++, a--`
 ```java
@@ -230,13 +230,13 @@ System.out.println(c); // 6
 System.out.println(d); // 5
 ```
 
-4) Operadores Relacionales: `==, !=, <, >, <=, >=`
-5) Operadores Lógicos: `&&, ||, !, &, |`
+4) Sec04Operadores Relacionales: `==, !=, <, >, <=, >=`
+5) Sec04Operadores Lógicos: `&&, ||, !, &, |`
     - `&&, ||` hacen efecto corto-circuito.
     - si la primera expresión de `&&` es false, no se evalua la 2da expresión.
     - si la primera expresion de `||` es true, no se evalua la 2da expresión.
 6) Operador Ternario: `(condicion) ? valorTrue : valorFalse;`
-7) Operadores unarios: `+` y `-`
+7) Sec04Operadores unarios: `+` y `-`
 ```java
 int num = 5;
 System.out.println(-num); // -5
@@ -373,11 +373,52 @@ Integer.MAX_VALUE
 
 <br>
 
+## 📌 Paso por Valor vs Paso por Referencia
+En Java, cuando pasamos datos a un método, estos pueden ser pasados por valor o por referencia, dependiendo del tipo de dato.
+
+### 📍 Paso por Valor
+Los tipos primitivos (int, double, boolean, etc.) se pasan por valor, lo que significa que el método recibe una copia del valor original y cualquier cambio dentro del método no afecta al valor original.
+
+### 📍 Paso por Referencia
+Los objetos y arreglos se pasan por copia de referencia. Se puede modificar su contenido, pero no cambiar la referencia original desde el método. Es decir, se pasa la dirección de memoria del objeto en lugar de una copia del valor. Cualquier modificación dentro del método afectará directamente al objeto original.
+
+* [Ver codigo de Valor vs Referencia](./Sec07ValorVsReferencia/)
+
+<br>
+
 ## 📌 Clases Date y Calendar
+* 🕰️ Date (obsoleta, pero aun usada):
+    - La clase `Date` representa una fecha y hora, pero tiene metodos obsoletos.
+    - Para formatearla y manipularla, se recomienda usar `SimpleDateFormat`.
+* 📅 Calendar (mas flexible que Date):
+    - `Calendar` es una clase abstracta que se obtiene con `Calendar.getInstance()`.
+    - Permite modificar partes especificas de la fecha (año, mes, día, hora, etc.).
+    - ✅ Nota: Los meses en Calendar comienzan en 0 (Enero).
+* 📝 SimpleDateFormat (formateo y parsing):
+    - Se usa para convertir `Date` a `String` con un formato especifico y viceversa.
+    - Se usa para formatear fechas, pero para cálculos es mejor Calendar o LocalDate.
+
+* [Ver codigo de Date y Calendar](./Sec08DateYCalendar/)
 
 <br>
 
 ## 📌 Clase System
+
+### 📍 Propiedades del Sistema (System.getProperty)
++ `user.name`: nombre del usuario del SO.
++ `user.home`: directorio principal del usuario.
++ `user.dir`: directorio del trabajo actual.
++ `System.getProperties().list(System.out)`: listar todas las propiedades del sistema.
+
+### 📍 Variables de Entorno (System.getenv)
++ `System.getenv()` devuelve un mapa con todas las variables de entorno del sistema.
++ Es posible definir nuevas variables de entorno desde la terminal con `setx VARIABLE "valor"`.
+
+### 📍 Ejecutar Programas del Sistema
++ Se usa `Runtime.getRuntime().exec(comando)` para ejecutar programas externos.
++ En Windows se puede abrir el Bloc de notas (`notepad`).
+
+* [Ver codigo de Clase System](./Sec09ClaseSystem/)
 
 <br>
 
@@ -390,6 +431,15 @@ La clase `Math` es una utilidad que proporciona métodos y constantes para reali
 * `Math.round(x)`: redondea al entero mas cercano.
 * `Math.pow(base, exp)`: calcula `base^exponente`.
 * `Math.sqrt(x)`: calcula la raiz cuadrada de `x`.
+
+### 📍 Clase Random
+Random se usa para generar numeros pseudoaleatorios de diferentes tipos(int, double, boolean, float, etc.). <br>
+Para usar Random, primero debemos importar la clase:
+```java
+import java.util.Random;
+```
+
+* [Ver codigo de Clase Math](./Sec10ClaseMath/)
 
 <br>
 

@@ -1,4 +1,4 @@
-package FlujoDeControl;
+package Sec05FlujoDeControl;
 
 public class Etiquetas {
     public static void main(String[] args) {

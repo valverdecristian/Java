@@ -1,4 +1,4 @@
-package Operadores;
+package Sec04Operadores;
 
 public class OperadorInstanceof {
     public static void main(String[] args) {

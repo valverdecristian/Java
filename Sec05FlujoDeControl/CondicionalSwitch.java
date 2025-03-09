@@ -1,4 +1,4 @@
-package FlujoDeControl;
+package Sec05FlujoDeControl;
 
 import java.util.Scanner;
 

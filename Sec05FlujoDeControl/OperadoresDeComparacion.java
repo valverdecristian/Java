@@ -1,4 +1,4 @@
-package FlujoDeControl;
+package Sec05FlujoDeControl;
 
 public class OperadoresDeComparacion {
     public static void main(String[] args) {

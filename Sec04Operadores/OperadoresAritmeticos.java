@@ -1,3 +1,5 @@
+package Sec04Operadores;
+
 public class OperadoresAritmeticos {
     public static void main(String[] args) {
         // conversion implicita
