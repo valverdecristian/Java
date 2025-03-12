@@ -3,10 +3,14 @@
 # 1️⃣ [Fundamentos de Java](seccion1.md)
 
 ### [📌 Entrada de datos con Scanner](seccion1.md#-entrada-de-datos-con-scanner)
-### [📌 Tipo String](seccion1.md#-tipo-string-cadenas)
-### [📌 Clase Math](seccion1.md#-clase-math-métodos-mas-utiles)
-### [📌 Sec04Operadores](seccion1.md#-operadores)
+### [📌 String](seccion1.md#-string-cadenas)
+### [📌 Operadores](seccion1.md#-operadores)
 ### [📌 Flujo de control](seccion1.md#-control-de-flujo)
+### [📌 Clases Wrapper](seccion1.md#-clases-wrapper-de-envoltorio)
+### [📌 Clases Date y Calendar](seccion1.md#-clases-date-y-calendar)
+### [📌 Clase System](seccion1.md#-clase-system)
+### [📌 Arrays](seccion1.md#-arreglos-arrays)
+### [📌 Clase Math](seccion1.md#-clase-math-métodos-mas-utiles)
 
 <br>
 

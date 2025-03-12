@@ -20,7 +20,7 @@
 
 ### 📍 ¿Que es un IDE?
 
-un **IDE** es un entorno de desarrollo integrado. Es una aplicación informática que proporciona servicios integrales para facilitarle al desarrollador o programador el desarrollo de software.
+un **IDE** es un entorno de desarrollo integrado. Es una aplicación informática que proporciona servicios integrales para facilitarle al programador el desarrollo de software.
 Ejemplos de un IDE para Java: Netbeans, Intellij o Eclipse.
 
 ## 📌 ¿Que necesitamos para programar en Java?
@@ -122,7 +122,7 @@ String nombre = scanner.nextLine();
 En Java, es comun convertir datos entre tipos primitivos y Strings.
 
 * De String a primitivos
-  - se usan los metodos `parseX()` de las clases contenedoras (`Wrapper Classes`). Ejemplo:`Integer`, `Float`, `Boolean`, `Double`, etc.
+  - se usan los metodos `parse[Tipo]()` de las clases contenedoras (`Wrapper Class`). Ejemplo:`Integer.parseInt("123")`, `Boolean.parseBoolean("true")`, etc.
 
 * De primitivos a String
   - se usa `String.valueOf()` o concatenacion con `""`
@@ -165,7 +165,7 @@ System.out.println(entero); // 3
 
 <br>
 
-### 📍 Tipo String: Cadenas
+### 📍 String: Cadenas
 * String es un tipo de referencia.
 * Se puede crear con `new String("texto")` o de forma literal `"texto"`.
 * Es una secuencia de caracteres.
@@ -211,11 +211,11 @@ System.out.println(esValido); // true
 
 <br>
 
-## 📌 Sec04Operadores
+## 📌 Operadores
 
-1) Sec04Operadores aritmeticos: `+, -, *, /, %`
-2) Sec04Operadores de Asignación: `=, +=, -=, *=, /=, %=`
-3) Sec04Operadores de Incremento y Decremento: `++` y `--`
+1) Operadores aritmeticos: `+, -, *, /, %`
+2) Operadores de Asignación: `=, +=, -=, *=, /=, %=`
+3) Operadores de Incremento y Decremento: `++` y `--`
     - pre: `++a, --a`
     - post: `a++, a--`
 ```java
@@ -230,13 +230,13 @@ System.out.println(c); // 6
 System.out.println(d); // 5
 ```
 
-4) Sec04Operadores Relacionales: `==, !=, <, >, <=, >=`
-5) Sec04Operadores Lógicos: `&&, ||, !, &, |`
+4) Operadores Relacionales: `==, !=, <, >, <=, >=`
+5) Operadores Lógicos: `&&, ||, !, &, |`
     - `&&, ||` hacen efecto corto-circuito.
     - si la primera expresión de `&&` es false, no se evalua la 2da expresión.
     - si la primera expresion de `||` es true, no se evalua la 2da expresión.
 6) Operador Ternario: `(condicion) ? valorTrue : valorFalse;`
-7) Sec04Operadores unarios: `+` y `-`
+7) Operadores unarios: `+` y `-`
 ```java
 int num = 5;
 System.out.println(-num); // -5
@@ -482,3 +482,69 @@ import miPaquete.*; // importa todas las clases de "miPaquete".
  │   ├── OtraClase.java
  ├── Main.java
 ```
+
+## 📌 Compilar aplicaciones Java de Forma manual
+
+### 📍 1. Compilar con `javac`
+El comando `javac` se usa para compilar archivos .java y generar bytecode en archivos `.class`.
+
+```java
+javac MiPrograma.java
+```
+
+Esto generará `MiPrograma.class`, que es el bytecode ejecutable por la JVM.
+
+### 📍 2. Ejecutar el Programa compilado `java`
+Despues de compilar, ejecutamos el bytecode con:
+
+```java
+java MiPrograma
+```
+
+### 📍 3. Pasar argumentos via Terminal
+
+```java
+java MiPrograma argumento1 argumento2
+```
+
+* [Ver codigo de Compilar aplicaciones Java de forma manual](./Sec11LineaDeComando/)
+
+## 📌 Arreglos (Arrays)
+Son tipos de datos de referencia que contienen varios elementos ordenados.
+Puede contener elementos de tipo de referencia o primitivos (pero siempre asociado a un solo tipo de dato). <br>
+
+La variable debe estar en plural.
+
+```java
+int[] numeros = new int[3];
+Producto[] productos = new Producto[3]; // reserva espacio para tres referencias
+
+// inicializacion de elementos
+productos[0] = new Producto("Mesa Comedor");
+productos[1] = new Producto("TV Sony");
+productos[2] = new Producto("Bicicleta");
+
+// obtener elementos
+Producto mesa = productos[0];
+Producto tv = productos[1];
+Producto bici = productos[2];
+
+// otra forma de declarar, instanciar e inicializar
+int[] numeros = {1,2,3};
+```
+
+* se puede recorrer un arreglo usando `for` o `for each`.
+* si queremos ordenar un array usamos el metodo sort de la clase Arrays (con s final)
+
+```java
+Arrays.sort(productos);
+```
+
+### 📍 System.arraycopy
+Este metodo se usa para copiar elementos de un arreglo a otro de manera eficiente.
+
+```java
+System.arraycopy(origen, posInicio, destino, posDestino, cantidad);
+```
+
+* [Ver codigo de Arreglos](./Sec12Arreglos/)

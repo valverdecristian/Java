@@ -1,6 +1,8 @@
+package Sec12Arreglos;
+
 import java.util.Arrays;
 
-public class Arreglos {
+public class EjemploArreglo2 {
     public static void main(String[] args) {
 
         // Inicializacion con tamaño fijo [los valores se asignan posteriormente]
@@ -10,10 +12,10 @@ public class Arreglos {
         numeros[0] = 12;
         numeros[4] = 16;
 
+        // los elementos sin valor por defecto seran zero o null en caso del String
         System.out.println(Arrays.toString(numeros));
         System.out.println(Arrays.toString(nombres));
 
-        
         // Inicializacion con valores
         int[] numeros2 = {1, 2, 4, 8, 16};
         String[] nombres2 = {"Alexis", "Luciano", "Ezequiel"};
@@ -22,14 +24,3 @@ public class Arreglos {
         System.out.println(Arrays.toString(nombres2));
     }
 }
-
-/**
- * LOS ARRAYS EN JAVA SON MUTABLES, LO QUE SIGNIFICA QUE SI SE CAMBIA EL VALOR
- * DE UNA VARIABLE QUE APUNTA A LA MISMA DIRECCION QUE OTRA VARIABLE (arr2 y arr1)
- * AFECTARA EN AMBAS EL VALOR CAMBIADO.
- * 
- * SOLO SE PUEDE CAMBIAR SUS VALORES, NO SU TAMAÑO.
- * 
- * PARA HACER UNA COPIA INDEPENDIENTE SE PUEDE USAR EL METODO clone()
- * 
- */
