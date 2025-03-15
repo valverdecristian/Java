@@ -548,3 +548,32 @@ System.arraycopy(origen, posInicio, destino, posDestino, cantidad);
 ```
 
 * [Ver codigo de Arreglos](./Sec12Arreglos/)
+
+## 📌 Matrices
+Son arreglos bidimensionales, donde cada uno de sus elementos es a su vez un arreglo en su segunda dimensión. Esto permite que no todos los elementos tengan el mismo tamaño. De esta forma es posible crear matrices recursivas y multi-dimensionales. <br>
+
+* El primer corchete representa las filas. `-`
+* El segundo corchete representa a las columnas. `|`
+* Se inicializan de forma simplificada o con `new`.
+
+👉 Pero, no solo podemos almacenar elementos del tipo primitivos, sino que tambien del tipo de referencia, objetos!
+
+```java
+// Sintaxis
+int[][] numeros = new int[fila][col];
+
+// obtener el tamaño
+System.out.println("numero de filas = "+ numeros.length);
+System.out.println("numero de columnas = "+ numeros[0].length);
+```
+   
+* Para recorrer una matriz con `for` usamos dos. Un for anidado.
+
+### 📍 Matriz Simetrica
+* Es una matriz cuadrada en la que los elementos son iguales respecto a su diagonal principal. Es decir:
+
+```java
+mat[i][j] == mat[j][i] // para todos los valores de i y j.
+```
+
+* Recorre solo la mitad superior (evitar comparaciones repetidas).

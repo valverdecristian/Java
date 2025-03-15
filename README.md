@@ -9,8 +9,9 @@
 ### [📌 Clases Wrapper](seccion1.md#-clases-wrapper-de-envoltorio)
 ### [📌 Clases Date y Calendar](seccion1.md#-clases-date-y-calendar)
 ### [📌 Clase System](seccion1.md#-clase-system)
-### [📌 Arrays](seccion1.md#-arreglos-arrays)
 ### [📌 Clase Math](seccion1.md#-clase-math-métodos-mas-utiles)
+### [📌 Arrays](seccion1.md#-arreglos-arrays)
+### [📌 Matrices](seccion1.md#-matrices)
 
 <br>
 
