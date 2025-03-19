@@ -2,17 +2,29 @@
 
 ## 📌 POO en Java
 
-- **Clases**: se escriben en PascalCase.
+### 📍 Clases
 
-  - Convencion:
-    - atributos.
-      - constantes (static final).
-      - propiedades de instancia.
-    - constructor.
-    - getters y setters.
-    - metodos: publicos, privados y finalmente los estaticos.
+* Es un molde para crear multiples objetos.
+* Se escriben en `PascalCase`.
+* Lo recomendable es una clase por archivo.
+* Una clase esta conformado por dos partes:
+  - El encabezado (declaracion de la clase) que como minimo tiene que tener la palabra reservada `class`.
+  - El cuerpo: que tiene los atributos y metodos.
 
-- **Objetos**: instancia de clase. Los objetos tienen Propiedades y Metodos(). Los objetos se escriben en camelCase.
+- Convencion/Orden dentro de una clase:
+  1) Atributos.
+    - Constantes (static final).
+    - Propiedades de instancia.
+  2) Constructor.
+  3) Getters y Setters.
+  4) Metodos.
+    - publicos, privados y finalmente los estaticos.
+
+### 📍 Objeto
+
+* Instancia de clase. Con el operador `new`.
+* Los objetos tienen Propiedades y Metodos().
+* Los objetos se escriben en `camelCase`.
 
 <br>
 
