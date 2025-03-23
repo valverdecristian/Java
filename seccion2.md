@@ -2,14 +2,11 @@
 
 ## 📌 POO en Java
 
-### 📍 Clases
+### 📍 Clase (Class)
 
 * Es un molde para crear multiples objetos.
 * Se escriben en `PascalCase`.
 * Lo recomendable es una clase por archivo.
-* Una clase esta conformado por dos partes:
-  - El encabezado (declaracion de la clase) que como minimo tiene que tener la palabra reservada `class`.
-  - El cuerpo: que tiene los atributos y metodos.
 
 - Convencion/Orden dentro de una clase:
   1) Atributos.
@@ -20,23 +17,14 @@
   4) Metodos.
     - publicos, privados y finalmente los estaticos.
 
-### 📍 Objeto
-
-* Instancia de clase. Con el operador `new`.
-* Los objetos tienen Propiedades y Metodos().
-* Los objetos se escriben en `camelCase`.
-
-<br>
-
-Metodos():
-
-- De Clase: se definen con `static`.
-- De Objetos: dependen de una instancia.
-
 <br>
 
 ## 📌 Encapsulamiento
-El encapsulamiento es uno de los principios fundamentales de la POO. Su objetivo es proteger los datos de una clase y restringir el acceso directo a ellos desde fuera de la clase
+
+El encapsulamiento es uno de los principios fundamentales de la POO. Su objetivo es proteger los datos de una clase y restringir el acceso directo a ellos desde fuera de la clase.
+
+### 📍 Principio de Encapsulamiento
+Es un proceso de agrupar o encapsular los datos (atributos) y metodos para proteger estos datos y que solo puedan ser accedidos o modificados a traves de getters y setters.
 
 ### 📍 ¿Cómo se implementa el encapsulamiento?
 
@@ -44,14 +32,81 @@ El encapsulamiento es uno de los principios fundamentales de la POO. Su objetivo
 2) Proveer metodos `public` de acceso (`getters`) y modificacion (`setters`).
 3) Usar modificadores de acceso: private, protected, public.
 
+### 📍 Principio de Ocultación
+Es la practica de esconder los detalles internos de la implementacion de una clase o componente, exponiendo solo lo necesario. Se logra utilizando modificadores de acceso e implementando abstracciones a través de interfaces o clases abstractas.
+
+### 📍 Modificadores de acceso
+
+- **private**: solo es accesible en la misma clase.
+  - Uso común: atributos y metodos internos que no deben ser modificados desde fuera.
+- **public**: accesible desde cualquier parte del código.
+  - Uso común: métodos y atributos que deben ser accesibles globalmente.
+- **protected**: accesible en la misma clase, en el mismo paquete y en subclases (herencia), pero no es accesible desde otras clases.
+  - Uso común: métodos y atributos que deben ser accesibles en clases hijas, pero no en otra clases externas.
+  - 💡 Problemas/MALA PRACTICA:
+    - ❌ Rompe el principio de encapsulamiento.
+    - ❌ Crea dependencias no deseadas.
+    - ✅ Alternativa mas segura: usar private
+- **default** (sin modificador): solo es accesible en la misma clase y en el mismo paquete.
+  - Uso común: métodos y clases auxiliares dentro del mismo paquete.
+
+```java
+// Clase Banco con Encapsulamiento y Ocultación
+public class Banco {
+    private double saldo; // Encapsulación con private
+
+    // Constructor
+    public Banco(double saldoInicial) {
+        this.saldo = saldoInicial;
+    }
+
+    // Getter para consultar el saldo (Proporciona solo lo necesario)
+    public double getSaldo() {
+        return saldo;
+    }
+
+    // Método público para realizar un depósito (Oculta la lógica interna)
+    public void depositar(double cantidad) {
+        if (cantidad > 0) {
+            saldo += cantidad;
+            System.out.println("Depósito realizado. Saldo actual: $" + saldo);
+        } else {
+            System.out.println("Cantidad inválida.");
+        }
+    }
+
+    // Método público para realizar un retiro
+    public void retirar(double cantidad) {
+        if (cantidad > 0 && cantidad <= saldo) {
+            saldo -= cantidad;
+            System.out.println("Retiro realizado. Saldo actual: $" + saldo);
+        } else {
+            System.out.println("Fondos insuficientes o cantidad inválida.");
+        }
+    }
+}
+
+// Clase Principal para probar el ejemplo
+public class Main {
+    public static void main(String[] args) {
+        Banco miBanco = new Banco(500);
+
+        // Acceso controlado a través de métodos públicos
+        miBanco.depositar(200);
+        miBanco.retirar(100);
+
+        // Consultar saldo
+        System.out.println("Saldo final: $" + miBanco.getSaldo());
+    }
+}
+```
+
 <br>
 
 ## 📌 Object
 
 - Todas las clases extienden de Object (es redundante agregarlo)
 - Cuando creamos una nueva instancia de nuestra clase base podemos ver que tenemos acceso a metodos de Object.
-
-<br>
 
 ### 📍 Métodos de Object
 
@@ -63,20 +118,123 @@ El encapsulamiento es uno de los principios fundamentales de la POO. Su objetivo
 
 <br>
 
-### 📍 Modificadores de acceso
+## 📌 Polimorfismo
 
-- **private**: solo es accesible en la misma clase.
-  - Uso común: atributos y metodos internos que no deben ser modificados desde fuera.
-- **public**: accesible desde cualquier parte del código.
-  - Uso común: métodos y atributos que deben ser accesibles globalmente.
-- **protected**: accesible en la misma clase, en el mismo paquete y en subclases (herencia), pero no es accesible desde otras clases.
-  - Uso común: métodos y atributos que deben ser accesibles en clases hijas, pero no en otra clases externas.
-  - Problemas/MALA PRACTICA:
-    - Rompe el principio de encapsulamiento.
-    - Crea dependencias no deseadas.
-    - Alternativa mas segura: usar private
-- **default** (sin modificador): solo es accesible en la misma clase y en el mismo paquete.
-  - Uso común: métodos y clases auxiliares dentro del mismo paquete.
+- Es uno de los pilares fundamentales de la POO.
+- Permite que una misma accion se comporte de manera diferente según el objeto que la ejecute.
+
+### 📍 Tipos de Polimorfismo
+
+- Polimorfismo en tiempo de compilacion (Method overloading)
+- Polimorfismo en tiempo de ejecucion (Method overriding)
+
+### 📍 Method/Constructor Overloading (Sobrecarga de Métodos/Constructores)
+Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes parametros (cantidad o tipo).
+
+- Method Overloading (Sobrecarga de metodos).
+  - Podemos definir varios metodos con el mismo nombre, pero con diferente numero o tipo de parametros.
+
+- Constructor Overloading (Sobrecarga de constructores).
+  - Se usa cuando queremos inicializar objetos de diferentes maneras.
+
+### 📍 Var-args (Argumentos variables)
+Los `var-args` permiten declarar un método que acepte una cantidad variable de argumentos del mismo tipo. Se define utilizando `...` despues del tipo de dato. Internamente los argumentos se manejan como un array.
+
+* [Ver codigo de Sobrecargas/Overloading](./Sec17POO_SobrecargaDeMetodos/)
+
+### 📍 Method Overriding (Sobrescritura)
+Es cuando una subclase redefine un método de su superclase para cambiar su comportamiento.
+
+### 📍 Anotacion @override
+
+No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
+
+- ✅ Ayuda a detectar errores en tiempo de compilación.
+- ✅ Mejora la legibilidad del código.
+- ✅ Evita confusion con sobrecarga (overloading)
+
+<br>
+
+## 📌 Final
+
+- Se usa para indicar que algo `no puede cambiar`.
+- Clase final: no puede ser heredada.
+- Método final: No puede ser sobrescrito (overriding).
+- Atributo final: No puede ser modificado despues de su asignacion inicial.
+- 💡 Uso común:
+  - Se usa `final` en constantes un 99% (`static final`).
+  - El atributo final se escribe completamente en mayusculas y separado por gion bajo.
+
+<br>
+
+## 📌 Atributos y Métodos Estaticos
+
+- Usa atributos estáticos para información compartida por todas las instancias, como contadores o configuraciones globales.
+
+- Usa métodos estáticos para funciones independientes que no requieren datos específicos de un objeto. En metodos estaticos solo se puede usar atributos estaticos.
+
+- 💡 Evita el uso excesivo de static, ya que puede generar dependencias innecesarias y dificultar la mantenibilidad del código.
+
+<br>
+
+## 📌 Enumeradores/Enum
+
+- Los enumeradores representan un conjunto fijo de constantes con nombres significativos.
+- Pueden tener atributos y metodos como cualquier otra clase.
+- Pueden ser utilizados en sentencias switch para facilitar la logica condicional.
+- Por convención, las constantes de un enum se escriben en mayusculas.
+
+```java
+public class EjemploEnum {
+    public enum EstadoPedido {
+        PENDIENTE, EN_PROCESO, COMPLETADO, CANCELADO;
+    }
+
+    public static void main(String[] args) {
+        EstadoPedido estado = EstadoPedido.EN_PROCESO;
+
+        // uso de switch con flechas
+        String mensaje = switch (estado) {
+            case PENDIENTE -> "El pedido está pendiente.";
+            case EN_PROCESO -> "El pedido está en proceso.";
+            case COMPLETADO -> "El pedido ha sido completado.";
+            case CANCELADO -> "El pedido fue cancelado.";
+        };
+
+        System.out.println(mensaje);
+    }
+}
+```
+
+<br>
+
+## 📌 Package (Paquete)
+
+- Sirve para organizar clases e interfaces en grupos.
+- Mejora la modularidad.
+- Cada archivo de Java debe hacer referencia al paquete que pertenece.
+- Se puede importar un paquete en otra clase con la palabra clave `import`.
+- Para importar todas las clases usamos el * (wildcard).
+- Tambien podemos importar metodos y atributos estaticos con `import static`.
+- El modificador default en las clases/atributos/metodos hara que solo este disponible en ese paquete.
+
+```java
+import miPaquete.MiClase; // importa una clase de "miPaquete".
+import miPaquete.*; // importa todas las clases de "miPaquete".
+```
+
+### 📍 Estructura de carpetas
+
+```java
+/proyecto/src/
+ ├── miPaquete/
+ │   ├── MiClase.java
+ ├── otroPaquete/
+ │   ├── OtraClase.java
+ ├── Main.java
+```
+
+* [Ver codigo de Paquetes](./Sec15POO_Paquetes/)
 
 <br>
 
@@ -117,106 +275,6 @@ class Gato extends Animal {} // Jerarquica
 
 <br>
 
-## 📌 Polimorfismo
-
-- Es uno de los pilares fundamentales de la POO.
-- Permite que una misma accion se comporte de manera diferente según el objeto que la ejecute.
-
-### 📍 Tipos de Polimorfismo
-
-- Polimorfismo en tiempo de compilacion (Method overloading)
-- Polimorfismo en tiempo de ejecucion (Method overriding)
-
-<br>
-
-### 📍 Method/Constructor Overloading (Sobrecarga de Métodos/Constructores)
-Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes parametros (cantidad o tipo).
-
-- Method Overloading (Sobrecarga de metodos).
-  - Podemos definir varios metodos con el mismo nombre, pero con diferente numero o tipo de parametros.
-
-```java
-public class Calculadora {
-    public int sumar(int a, int b) {
-        return a + b;
-    }
-    
-    // Método sobrecargado para sumar tres números enteros
-    public int sumar(int a, int b, int c) {
-        return a + b + c;
-    }
-    
-    // Método sobrecargado para sumar dos números decimales
-    public double sumar(double a, double b) {
-        return a + b;
-    }
-
-    public static void main(String[] args) {
-        Calculadora calc = new Calculadora();
-        
-        System.out.println("Suma de 2 enteros: " + calc.sumar(5, 10));       // 15
-        System.out.println("Suma de 3 enteros: " + calc.sumar(5, 10, 15));  // 30
-        System.out.println("Suma de 2 decimales: " + calc.sumar(5.5, 2.2)); // 7.7
-    }
-}
-```
-
-- Constructor Overloading (Sobrecarga de constructores).
-  - Se usa cuando queremos inicializar objetos de diferentes maneras.
-
-```java
-public class Persona {
-    String nombre;
-    int edad;
-
-    // Constructor sin parámetros (valores por defecto)
-    public Persona() {
-        this.nombre = "Desconocido";
-        this.edad = 0;
-    }
-
-    // Constructor con un parámetro (nombre)
-    public Persona(String nombre) {
-        this.nombre = nombre;
-        this.edad = 0;
-    }
-
-    // Constructor con dos parámetros (nombre y edad)
-    public Persona(String nombre, int edad) {
-        this.nombre = nombre;
-        this.edad = edad;
-    }
-
-    public void mostrarInfo() {
-        System.out.println("Nombre: " + nombre + ", Edad: " + edad);
-    }
-
-    public static void main(String[] args) {
-        Persona p1 = new Persona();               // Usa el constructor sin parámetros
-        Persona p2 = new Persona("Ana");          // Usa el constructor con un parámetro
-        Persona p3 = new Persona("Carlos", 25);   // Usa el constructor con dos parámetros
-
-        p1.mostrarInfo(); // Nombre: Desconocido, Edad: 0
-        p2.mostrarInfo(); // Nombre: Ana, Edad: 0
-        p3.mostrarInfo(); // Nombre: Carlos, Edad: 25
-    }
-}
-```
-
-<br>
-
-### 📍 Method Overriding (Sobrescritura)
-Es cuando una subclase redefine un método de su superclase para cambiar su comportamiento.
-
-### 📍 Anotacion @override
-
-No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
-
-- ✅ Ayuda a detectar errores en tiempo de compilación.
-- ✅ Mejora la legibilidad del código.
-- ✅ Evita confusion con sobrecarga (overloading)
-
-<br>
 
 ## 📌 Conversión de Objetos
 
@@ -285,6 +343,8 @@ public class Main {
 }
 ```
 
+* [Ver codigo de Herencia](./Sec18POO_Herencia/)
+
 <br>
 
 ## 📌 Clases y Métodos Abstractos
@@ -300,13 +360,6 @@ public class Main {
 ### 📍 Metodo Abstracto
 
 - debe ser implementado por las subclases.
-
-### 📍 Palabra clave Final
-- Se usa para indicar que algo `no puede cambiar`.
-- Clase final: no puede ser heredada.
-- Método final: No puede ser sobrescrito (overriding).
-- Atributo final: No puede ser modificado despues de su asignacion inicial.
-- 💡 Uso común: Se usa `final` en constantes (`static final`).
 
 <br>
 

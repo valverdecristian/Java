@@ -458,31 +458,6 @@ import java.util.Random;
 
 <br>
 
-## 📌 Package (Paquete)
-
-- Sirve para organizar clases e interfaces en grupos.
-- Mejora la modularidad.
-- Cada archivo de Java debe hacer referencia al paquete que pertenece.
-- Se puede importar un paquete en otra clase con la palabra clave `import`.
-
-```java
-import miPaquete.MiClase; // importa una clase de "miPaquete".
-import miPaquete.*; // importa todas las clases de "miPaquete".
-```
-
-<br>
-
-## 📌 Estructura de carpetas
-
-```java
-/proyecto/src/
- ├── miPaquete/
- │   ├── MiClase.java
- ├── otroPaquete/
- │   ├── OtraClase.java
- ├── Main.java
-```
-
 ## 📌 Compilar aplicaciones Java de Forma manual
 
 ### 📍 1. Compilar con `javac`
