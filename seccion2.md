@@ -2,13 +2,21 @@
 
 ## 📌 POO en Java
 
-### 📍 Clase (Class)
+### 📍 Introducción a POO
+La POO es un paradigma de programación que se basa en cuatro pilares fundamentales:
 
-* Es un molde para crear multiples objetos.
+1) **Encapsulamiento**: Proteger los datos y exponer solo lo necesario.
+2) **Herencia**: Reutilizar y extender el comportamiento de las clases.
+3) **Polimorfismo**: Permitir que un mismo metodo se comporte de manera diferente según el objeto que lo ejecute.
+4) **Abstracción**: Ocultar los detalles de implementación y mostrar solo la funcionalidad esencial.
+
+### 📍 Clases: Definicion y Estructura
+
+* Es un molde para crear objetos.
 * Se escriben en `PascalCase`.
 * Lo recomendable es una clase por archivo.
 
-- Convencion/Orden dentro de una clase:
+- Convencion/Orden de Estructura:
   1) Atributos.
     - Constantes (static final).
     - Propiedades de instancia.
@@ -17,11 +25,24 @@
   4) Metodos.
     - publicos, privados y finalmente los estaticos.
 
+### 📍 Objecto
+
+- Todas las clases extienden de Object (es redundante agregarlo)
+- Cuando creamos una nueva instancia de nuestra clase base podemos ver que tenemos acceso a metodos de Object.
+
+### 📍 Métodos de Object
+
+- `equals(Object obj)`: compara si dos objetos son iguales. Por defecto, compara si son la misma instancia en memoria (misma referencia), pero se puede sobrescribir para comparar valores (sobrescribir equals).
+- `hashCode()`: devuelve un numero entero que representa la posicion del objeto en memoria. Se usa en estructuras como `HashMap` y `HashSet`.
+  - Si `equals` es sobrescrito, `hashCode` también debe serlo para mantener coherencia.
+- `toString()`: devuelve una representación en texto del objeto. Por defecto, imprime el nombre de la clase y su referencia en memoria, pero se puede sobrescribir. (`@override de toString`)
+- `getClass()`: devuelve la clase del objeto en tiempo de ejecución.
+
 <br>
 
 ## 📌 Encapsulamiento
 
-El encapsulamiento es uno de los principios fundamentales de la POO. Su objetivo es proteger los datos de una clase y restringir el acceso directo a ellos desde fuera de la clase.
+Su objetivo es proteger los datos de una clase y restringir el acceso directo a ellos desde fuera de la clase.
 
 ### 📍 Principio de Encapsulamiento
 Es un proceso de agrupar o encapsular los datos (atributos) y metodos para proteger estos datos y que solo puedan ser accedidos o modificados a traves de getters y setters.
@@ -38,11 +59,8 @@ Es la practica de esconder los detalles internos de la implementacion de una cla
 ### 📍 Modificadores de acceso
 
 - **private**: solo es accesible en la misma clase.
-  - Uso común: atributos y metodos internos que no deben ser modificados desde fuera.
 - **public**: accesible desde cualquier parte del código.
-  - Uso común: métodos y atributos que deben ser accesibles globalmente.
 - **protected**: accesible en la misma clase, en el mismo paquete y en subclases (herencia), pero no es accesible desde otras clases.
-  - Uso común: métodos y atributos que deben ser accesibles en clases hijas, pero no en otra clases externas.
   - 💡 Problemas/MALA PRACTICA:
     - ❌ Rompe el principio de encapsulamiento.
     - ❌ Crea dependencias no deseadas.
@@ -51,84 +69,36 @@ Es la practica de esconder los detalles internos de la implementacion de una cla
   - Uso común: métodos y clases auxiliares dentro del mismo paquete.
 
 ```java
-// Clase Banco con Encapsulamiento y Ocultación
-public class Banco {
-    private double saldo; // Encapsulación con private
+// Ejemplo de Encapsulamiento
+public class CuentaBancaria {
+    private double saldo;
 
-    // Constructor
-    public Banco(double saldoInicial) {
+    public CuentaBancaria(double saldoInicial) {
         this.saldo = saldoInicial;
     }
 
-    // Getter para consultar el saldo (Proporciona solo lo necesario)
-    public double getSaldo() {
-        return saldo;
-    }
-
-    // Método público para realizar un depósito (Oculta la lógica interna)
     public void depositar(double cantidad) {
         if (cantidad > 0) {
             saldo += cantidad;
-            System.out.println("Depósito realizado. Saldo actual: $" + saldo);
-        } else {
-            System.out.println("Cantidad inválida.");
         }
     }
 
-    // Método público para realizar un retiro
-    public void retirar(double cantidad) {
-        if (cantidad > 0 && cantidad <= saldo) {
-            saldo -= cantidad;
-            System.out.println("Retiro realizado. Saldo actual: $" + saldo);
-        } else {
-            System.out.println("Fondos insuficientes o cantidad inválida.");
-        }
-    }
-}
-
-// Clase Principal para probar el ejemplo
-public class Main {
-    public static void main(String[] args) {
-        Banco miBanco = new Banco(500);
-
-        // Acceso controlado a través de métodos públicos
-        miBanco.depositar(200);
-        miBanco.retirar(100);
-
-        // Consultar saldo
-        System.out.println("Saldo final: $" + miBanco.getSaldo());
+    public double getSaldo() {
+        return saldo;
     }
 }
 ```
 
 <br>
 
-## 📌 Object
-
-- Todas las clases extienden de Object (es redundante agregarlo)
-- Cuando creamos una nueva instancia de nuestra clase base podemos ver que tenemos acceso a metodos de Object.
-
-### 📍 Métodos de Object
-
-- `equals(Object obj)`: compara si dos objetos son iguales. Por defecto, compara si son la misma instancia en memoria (misma referencia), pero se puede sobrescribir para comparar valores (sobrescribir equals).
-- `hashCode()`: devuelve un numero entero que representa la posicion del objeto en memoria. Se usa en estructuras como `HashMap` y `HashSet`.
-  - Si `equals` es sobrescrito, `hashCode` también debe serlo para mantener coherencia.
-- `toString()`: devuelve una representación en texto del objeto. Por defecto, imprime el nombre de la clase y su referencia en memoria, pero se puede sobrescribir. (`@override de toString`)
-- `getClass()`: devuelve la clase del objeto en tiempo de ejecución.
-
-<br>
-
 ## 📌 Polimorfismo
-
-- Es uno de los pilares fundamentales de la POO.
-- Permite que una misma accion se comporte de manera diferente según el objeto que la ejecute.
 
 ### 📍 Tipos de Polimorfismo
 
 - Polimorfismo en tiempo de compilacion (Method overloading)
 - Polimorfismo en tiempo de ejecucion (Method overriding)
 
-### 📍 Method/Constructor Overloading (Sobrecarga de Métodos/Constructores)
+### 📍 Sobrecarga de Métodos/Constructores (overloading)
 Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes parametros (cantidad o tipo).
 
 - Method Overloading (Sobrecarga de metodos).
@@ -141,9 +111,6 @@ Es cuando un mismo metodo o constructor tiene multiples versiones con diferentes
 Los `var-args` permiten declarar un método que acepte una cantidad variable de argumentos del mismo tipo. Se define utilizando `...` despues del tipo de dato. Internamente los argumentos se manejan como un array.
 
 * [Ver codigo de Sobrecargas/Overloading](./Sec17POO_SobrecargaDeMetodos/)
-
-### 📍 Method Overriding (Sobrescritura)
-Es cuando una subclase redefine un método de su superclase para cambiar su comportamiento.
 
 ### 📍 Anotacion @override
 
@@ -240,27 +207,40 @@ import miPaquete.*; // importa todas las clases de "miPaquete".
 
 ## 📌 Herencia
 
-- Es un concepto de la POO, que permite que una clase derive (herede) caracteristicas y comportamientos de otra.
+- Permite que una clase derive (herede) caracteristicas y comportamientos de otra.
 - Esto ayuda a reutilizar codigo.
-- Se implementa usando la palabra clave `extends`
+- Se implementa usando la palabra clave `extends`.
 - La `superclase` proporciona atributos y métodos.
 - La `subclase` hereda esos atributos y metodos, y puede agregar o modificar su porpio comportamiento.
 - Para cambiar el comportamiento de un metodo heredado usamos `@override`.
 - Uso de `super` para acceder a la superclase:
   - que permite llamar al constructor de la superclase.
   - permite acceder a metodos de la superclase si fueron sobreescritos.
-
-<br>
-
-### 📍 Tipos de herencia
-
 - Java no admite herencia multiple, pero si admite herencia jerarquica.
 
 ```java
-class Perro extends Animal {} // Simple
+public class Animal {
+    protected String nombre;
 
-class Perro extends Animal {} // Jerarquica
-class Gato extends Animal {} // Jerarquica
+    public Animal(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void hacerSonido() {
+        System.out.println("Sonido genérico");
+    }
+}
+
+public class Perro extends Animal {
+    public Perro(String nombre) {
+        super(nombre);
+    }
+
+    @Override
+    public void hacerSonido() {
+        System.out.println("Guau guau");
+    }
+}
 ```
 
 - Si se necesita compartir codigo entre varias clases, se puede usar interfaces (con `implements`)
@@ -272,11 +252,6 @@ class Gato extends Animal {} // Jerarquica
 - Siempre se va a ejecutar primero el constructor de la superclase y luego se va a ejecutar el constructor de la subclase.
 - Cuando usamos la palabra clave `super` estamos llamando explicitamente al constructor de la superclase desde la subclase. Sino Java llama automaticamente al constructor **SIN PARAMETROS** de la superclase.
   - Si la superclase no tiene un constructor sin parametros, es obligatorio llamar a `super(...)` en la subclase.
-
-<br>
-
-
-## 📌 Conversión de Objetos
 
 ### 📍 Upcasting (Conversión de Subclase a Superclase)
 
@@ -307,66 +282,44 @@ miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
 
 - Usar "instanceof" antes de un downcasting para evitar errores.
 
-<br>
-
-### 📍 Comparando objetos
-Vamos a querer comparar distinos objetos en base a propiedades que estos tengan. Para estos casos podemos realizar el metodo `@override` de `equals`, ya que por defecto `equals()` compara si dos referencias apuntan al mismo objeto en memoria.
-
-```java
-class Persona {
-    String nombre;
-
-    public Persona(String nombre) {
-        this.nombre = nombre;
-    }
-
-    // Sobrescribimos equals() para comparar por contenido
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;  // Si es el mismo objeto, son iguales
-        if (obj == null || getClass() != obj.getClass()) return false; // Si no son del mismo tipo, son distintos
-        
-        Persona persona = (Persona) obj; // Convertimos obj a Persona
-        return this.nombre.equals(persona.nombre); // Comparamos los nombres
-    }
-}
-
-public class Main {
-    public static void main(String[] args) {
-        Persona p1 = new Persona("Juan");
-        Persona p2 = new Persona("Juan");
-        Persona p3 = new Persona("Maria");
-
-        System.out.println(p1.equals(p2)); // true (ahora compara nombres)
-        System.out.println(p1.equals(p3)); // false (nombres diferentes)
-    }
-}
-```
-
 * [Ver codigo de Herencia](./Sec18POO_Herencia/)
 
 <br>
 
-## 📌 Clases y Métodos Abstractos
+## 📌 Clases Abstractas
 
 - Se utilizan para definir comportamientos genéricos que deben ser implementados por las subclases.
-
-### 📍 Clase Abstracta
-
-- es una clase que no puede instanciarse directamente.
-- Sirve como base para otras clases.
-- Puede contener `METODOS ABSTRACTOS` (sin implementacion == solo se declara, no tiene llaves ni cuerpo) y `METODOS CONCRETOS` (con implementacion dentro de la clase abstracta, osea posee un cuerpo {} con instrucciones que se ejecutaran cuando se llame al método.)
+- Es una clase que no puede instanciarse directamente.
+- Se utiliza el modificador `abstract` en la declaracion de la clase.
+- Puede contener `metodos abstractos` (sin implementacion == solo se declara, no tiene llaves ni cuerpo) y `metodos concretos` (con implementacion dentro de la clase abstracta, osea posee un cuerpo {} con instrucciones que se ejecutaran cuando se llame al método.)
+- Si una clase abstracta extiende de otra clase abstracta no esta obligada a implementar sus metodos abstractos.
 
 ### 📍 Metodo Abstracto
 
-- debe ser implementado por las subclases.
+- Debe ser implementado por las subclases.
+- Un metodo abstracto requiere que la clase sea si o si abstracta.
+- Los metodos abstractos por lo general van al final de la clase.
+
+```java
+public abstract class Figura {
+    // Método sin implementación
+    public abstract double calcularArea();
+
+    // Método concreto (con implementación)
+    public void mostrarTipo() {
+        System.out.println("Esta es una figura.");
+    }
+}
+```
+
+* [Ver codigo de Clases Abstractas](./Sec19POO_HerenciaYClasesAbstractas/)
 
 <br>
 
 ## 📌 Interfaces
 
 - Es una estructura que define un conjunto de métodos abstractos que una clase debe implementar. Sirve como un contrato que las clases deben seguir.
-- Se implementan con `implements` en una clase.
+- Se usa la palabra clave `implements`.
 - Una clase puede implementar multiples interfaces.
 - No pueden contener implementacion en sus metodos (excepto default o static).
 - Define métodos abstractos y constantes.
@@ -439,3 +392,15 @@ public class Main {
     }
 }
 ```
+
+### 📍 Principios SOLID
+
+1) Single Responsibility: Una clase debe tener una sola responsabilidad.
+
+2) Open/Closed: Las clases deben estar abiertas para extensión pero cerradas para modificación.
+
+3) Liskov Substitution: Las subclases deben poder sustituir a sus superclases.
+
+4) Interface Segregation: Las interfaces deben ser específicas para cada cliente.
+
+5) Dependency Inversion: Depender de abstracciones, no de implementaciones concretas.
