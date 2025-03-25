@@ -26,12 +26,10 @@ La POO es un paradigma de programación que se basa en cuatro pilares fundamenta
     - publicos, privados y finalmente los estaticos.
 
 ### 📍 Objecto
-
 - Todas las clases extienden de Object (es redundante agregarlo)
 - Cuando creamos una nueva instancia de nuestra clase base podemos ver que tenemos acceso a metodos de Object.
 
 ### 📍 Métodos de Object
-
 - `equals(Object obj)`: compara si dos objetos son iguales. Por defecto, compara si son la misma instancia en memoria (misma referencia), pero se puede sobrescribir para comparar valores (sobrescribir equals).
 - `hashCode()`: devuelve un numero entero que representa la posicion del objeto en memoria. Se usa en estructuras como `HashMap` y `HashSet`.
   - Si `equals` es sobrescrito, `hashCode` también debe serlo para mantener coherencia.
@@ -41,14 +39,12 @@ La POO es un paradigma de programación que se basa en cuatro pilares fundamenta
 <br>
 
 ## 📌 Encapsulamiento
-
 Su objetivo es proteger los datos de una clase y restringir el acceso directo a ellos desde fuera de la clase.
 
 ### 📍 Principio de Encapsulamiento
 Es un proceso de agrupar o encapsular los datos (atributos) y metodos para proteger estos datos y que solo puedan ser accedidos o modificados a traves de getters y setters.
 
 ### 📍 ¿Cómo se implementa el encapsulamiento?
-
 1) Declarar los atributos como `private`.
 2) Proveer metodos `public` de acceso (`getters`) y modificacion (`setters`).
 3) Usar modificadores de acceso: private, protected, public.
@@ -57,7 +53,6 @@ Es un proceso de agrupar o encapsular los datos (atributos) y metodos para prote
 Es la practica de esconder los detalles internos de la implementacion de una clase o componente, exponiendo solo lo necesario. Se logra utilizando modificadores de acceso e implementando abstracciones a través de interfaces o clases abstractas.
 
 ### 📍 Modificadores de acceso
-
 - **private**: solo es accesible en la misma clase.
 - **public**: accesible desde cualquier parte del código.
 - **protected**: accesible en la misma clase, en el mismo paquete y en subclases (herencia), pero no es accesible desde otras clases.
@@ -94,7 +89,6 @@ public class CuentaBancaria {
 ## 📌 Polimorfismo
 
 ### 📍 Tipos de Polimorfismo
-
 - Polimorfismo en tiempo de compilacion (Method overloading)
 - Polimorfismo en tiempo de ejecucion (Method overriding)
 
@@ -113,8 +107,7 @@ Los `var-args` permiten declarar un método que acepte una cantidad variable de 
 * [Ver codigo de Sobrecargas/Overloading](./Sec17POO_SobrecargaDeMetodos/)
 
 ### 📍 Anotacion @override
-
-No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, pero es recomendable por las siguientes razones:
+Es recomendable usarlo por las siguientes razones:
 
 - ✅ Ayuda a detectar errores en tiempo de compilación.
 - ✅ Mejora la legibilidad del código.
@@ -123,29 +116,26 @@ No es estrictamente necesario usar `@override` cuando sobrescribimos un metodo, 
 <br>
 
 ## 📌 Final
-
 - Se usa para indicar que algo `no puede cambiar`.
 - Clase final: no puede ser heredada.
 - Método final: No puede ser sobrescrito (overriding).
-- Atributo final: No puede ser modificado despues de su asignacion inicial.
+- Atributo final: No puede ser modificado despues de su asignacion inicial. Se escribe completamente en mayusculas y separado por gion bajo.
 - 💡 Uso común:
   - Se usa `final` en constantes un 99% (`static final`).
-  - El atributo final se escribe completamente en mayusculas y separado por gion bajo.
 
 <br>
 
 ## 📌 Atributos y Métodos Estaticos
 
-- Usa atributos estáticos para información compartida por todas las instancias, como contadores o configuraciones globales.
+- Usa **atributos estáticos** para información compartida por todas las instancias, como contadores o configuraciones globales.
 
-- Usa métodos estáticos para funciones independientes que no requieren datos específicos de un objeto. En metodos estaticos solo se puede usar atributos estaticos.
+- Usa **métodos estáticos** para funciones independientes que no requieren datos específicos de un objeto. En metodos estaticos solo se puede usar atributos estaticos.
 
 - 💡 Evita el uso excesivo de static, ya que puede generar dependencias innecesarias y dificultar la mantenibilidad del código.
 
 <br>
 
 ## 📌 Enumeradores/Enum
-
 - Los enumeradores representan un conjunto fijo de constantes con nombres significativos.
 - Pueden tener atributos y metodos como cualquier otra clase.
 - Pueden ser utilizados en sentencias switch para facilitar la logica condicional.
@@ -206,7 +196,6 @@ import miPaquete.*; // importa todas las clases de "miPaquete".
 <br>
 
 ## 📌 Herencia
-
 - Permite que una clase derive (herede) caracteristicas y comportamientos de otra.
 - Esto ayuda a reutilizar codigo.
 - Se implementa usando la palabra clave `extends`.
@@ -248,13 +237,11 @@ public class Perro extends Animal {
 <br>
 
 ### 📍 Orden en el cual se ejecutan los contructores en Herencia
-
 - Siempre se va a ejecutar primero el constructor de la superclase y luego se va a ejecutar el constructor de la subclase.
 - Cuando usamos la palabra clave `super` estamos llamando explicitamente al constructor de la superclase desde la subclase. Sino Java llama automaticamente al constructor **SIN PARAMETROS** de la superclase.
   - Si la superclase no tiene un constructor sin parametros, es obligatorio llamar a `super(...)` en la subclase.
 
 ### 📍 Upcasting (Conversión de Subclase a Superclase)
-
 Es cuando convertimos un objeto de una subclase en un objeto de su superclase.
 Se hace automaticamente (casting implicito). <br>
 No se pierde informacion, pero se limitan los metodos disponibles a los de la superclase. Ejemplo:
@@ -268,7 +255,6 @@ Animal miAnimal = new Perro(); // Upcasting automático.
 <br>
 
 ### 📍 Downcasting (Conversión de Superclase a Subclase)
-
 Es cuando convertimos un objeto de una superclase en un objeto de su subclase. <br>
 No es automatico (requiere casting explicito) <br>
 Puede causar `ClassCastException`. <br>
@@ -287,7 +273,6 @@ miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
 <br>
 
 ## 📌 Clases Abstractas
-
 - Se utilizan para definir comportamientos genéricos que deben ser implementados por las subclases.
 - Es una clase que no puede instanciarse directamente.
 - Se utiliza el modificador `abstract` en la declaracion de la clase.
@@ -295,7 +280,6 @@ miPerro.correr(); // ✅ Ahora sí se puede acceder a métodos de Perro
 - Si una clase abstracta extiende de otra clase abstracta no esta obligada a implementar sus metodos abstractos.
 
 ### 📍 Metodo Abstracto
-
 - Debe ser implementado por las subclases.
 - Un metodo abstracto requiere que la clase sea si o si abstracta.
 - Los metodos abstractos por lo general van al final de la clase.
@@ -317,22 +301,18 @@ public abstract class Figura {
 <br>
 
 ## 📌 Interfaces
-
-- Es una estructura que define un conjunto de métodos abstractos que una clase debe implementar. Sirve como un contrato que las clases deben seguir.
+- Es una estructura que define un conjunto de **métodos abstractos** que una clase debe implementar. Sirve como un contrato que las clases deben seguir.
 - Se usa la palabra clave `implements`.
 - Una clase puede implementar multiples interfaces.
 - No pueden contener implementacion en sus metodos (excepto default o static).
-- Define métodos abstractos y constantes.
-  - Las variables en interfaces son siempre `public static final` (constantes).
-- Convenciones: depende del contexto cual deberiamos usar.
-  - En Java suelen terminar en "Able". Ej: Runnable, Serializable.
+- Las variables en interfaces son siempre `public static final` (constantes).
+- Convenciones: Suelen terminar en "Able". Ej: Runnable, Serializable.
 - Los metodos en interfaces no necesitan el modificador `public` porque es redundante.
 - Desde Java 8, se pueden agregar métodos con implementacion usando `default` y `static`.
   - `default`: para usar el metodo por defecto.
   - `static`: para llamar al metodo estatico.
 
 ### 📍 Codigo estrechamente acoplado (Tightly coupled code)
-
 - Se refiere a un diseño en el que los componentes o clases de un sistema dependen fuertemente entre sí, lo que hace que cualquier cambio en una parte afecte a otras. Esto reduce la flexibilidad y dificulta el mantenimiento del código.
 - 📢 Problemas:
   - Dificil de mantener.
@@ -344,7 +324,6 @@ public abstract class Figura {
 - 👉 Conclusion: Usar interfaces, inyeccion de dependencias y principios SOLID ayuda a reducir el acoplamiento y hacer el código mas escalable.
 
 ### 📍 Inyeccion de Dependencias (Dependency Injection)
-
 - Es un patrón de diseño que permite reducir el acoplamiento entre clases proporcionando las dependencias desde el exterior en lugar de instanciarlas dentro de la propia clase.
 - En proyectos grandes, frameworks como Spring manejan las dependencias automaticamente.
 - ✅ EN DEFINITIVA: Para pasar la dependencia desde afuera (Inyeccion de Dependencias) usamos una interfaz. Por ejemplo: tenemos una clase llamada `ProveedorA` y `ProveedorB` que implementan una interfaz `ProveedorInterface`, luego tenemos otra clase (`Tienda`) que utiliza esta interfaz (en vez de `Proveedor`) y puede instanciar un objeto que implementa esta interfaz como lo son `ProveedorA` o `ProveedorB`.
@@ -393,14 +372,11 @@ public class Main {
 }
 ```
 
-### 📍 Principios SOLID
+<br>
 
+## 📌 Principios SOLID
 1) Single Responsibility: Una clase debe tener una sola responsabilidad.
-
 2) Open/Closed: Las clases deben estar abiertas para extensión pero cerradas para modificación.
-
 3) Liskov Substitution: Las subclases deben poder sustituir a sus superclases.
-
 4) Interface Segregation: Las interfaces deben ser específicas para cada cliente.
-
 5) Dependency Inversion: Depender de abstracciones, no de implementaciones concretas.
