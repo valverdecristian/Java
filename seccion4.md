@@ -68,7 +68,7 @@ Throwable
     - Declara que un metodo puede generar una excepción.
     - Usamos la palabra reservada "throws"
 
-- Podemos crear Excepciones personalizadas (extendemos Exception).
+- ✅ Podemos crear Excepciones personalizadas (extendemos Exception si queremos que sea chequeada, sino RuntimeExcepction si queremos que no sea chequeada).
 
 ### 📍 Capturar, manejar y relanzar una excepcion
 
@@ -105,6 +105,26 @@ Throwable
 
 ✅ Regla general: Podemos capturar Checked y Unchecked Exceptions con try-catch, pero no los errores (Error).
 
+```java
+// Excepcion personalizada comprobada (Checked)
+// Extiende de Exception
+public class MiExcepcionComprobada extends Exception {
+    public MiExcepcionComprobada(String mensaje) {
+        super(mensaje);
+    }
+}
+```
+
+```java
+// Excepcion NO comprobada (unchecked)
+// Extiende de RuntimeException
+public class MiExcepcionNoComprobada extends RuntimeException {
+    public MiExcepcionNoComprobada(String mensaje) {
+        super(mensaje);
+    }
+}
+```
+
 ### 📍 Try-with-resource
 
 - Es una estructura try que cierra automaticamente los recursos (como archivos, conexiones de DB, sockets, etc.) cuando termina su ejecucion.
@@ -114,6 +134,23 @@ Throwable
   - Se puede declarar mas de un recurso dentro del parentesis.
 - ✔ Menos errores y menos código en comparación con el cierre manual (finally).
 - ✔ Siempre que sea posible, usa try-with-resources para evitar fugas de memoria.
+
+```java
+// Ejemplo con BufferedReader
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class EjemploTryWithResources {
+    public static void main(String[] args) {
+        try (BufferedReader br = new BufferedReader(new FileReader("archivo.txt"))) {
+            System.out.println(br.readLine()); // Lee la primera línea del archivo
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
+```
 
 ### 📍 Exception Chaining (Cadena de Excepciones)
 

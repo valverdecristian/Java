@@ -324,8 +324,9 @@ Proporcionan metodos utiles para manipular valores numericos, convertir tipos de
 
 <br>
 
-### 📍 Autoboxing y Unboxing
+### 📍 Autoboxing, Boxing y Unboxing
 ✅ Autoboxing: Conversión automática de un tipo primitivo a su clase Wrapper. <br>
+✅ Boxing: es el proceso de convertir un tipo primitivo en su clase contenedora. <br>
 ✅ Unboxing: Conversión automática de un objeto Wrapper a su tipo primitivo. <br>
 
 ```java

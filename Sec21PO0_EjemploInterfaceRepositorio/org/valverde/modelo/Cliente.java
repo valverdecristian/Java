@@ -1,27 +1,16 @@
 package Sec21PO0_EjemploInterfaceRepositorio.org.valverde.modelo;
 
-public class Cliente {
-    private Integer id;
+import java.util.Objects;
+
+public class Cliente extends BaseEntity {
     private String nombre;
     private String apellido;
-    private static int ultimoId;
-
-    public Cliente() {
-        this.id = ++ultimoId;
-    }
 
     public Cliente(String nombre, String apellido) {
-        this();
+        // super: va a la clase padre para asignar un id incremental
+        super();
         this.nombre = nombre;
         this.apellido = apellido;
-    }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
     }
 
     public String getNombre() {

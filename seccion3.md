@@ -119,12 +119,6 @@ public class WildcardEjemplo {
 }
 ```
 
-### 📍 Boxing & Unboxing
-
-- Boxing: es el proceso de convertir un tipo primitivo en su clase contenedora.
-- Unboxing: convertir una clase contenedora en su tipo primitivo.
-- Java hace esto automaticamente, por lo que no es necesario hacer conversiones manuales.
-
 <br>
 
 ## 📌 Colecciones
